@@ -111,40 +111,40 @@ const Math = () => {
             <H1 className="title">Math</H1>
 
             <Unit className="unit">
-                <div onClick={() => {window.location.href = "/math/algebra"}}>
+                <div onClick={() => { window.location.href = "/math?unit=algebra" }}>
                     <UnitBackground style={algebraBgStyle}></UnitBackground>
                     <UnitTitle>Algebra</UnitTitle>
                     <Description>
-                        Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. 
-                        In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables. 
-                        This is useful for several reasons. 
+                        Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols.
+                        In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables.
+                        This is useful for several reasons.
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/algebra?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/algebra?action=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=algebra&action=learn" }}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=algebra&action=practice" }}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
             <Unit className="unit">
-                <div onClick={() => {window.location.href = "/math/trigonometry"}}>
+                <div onClick={() => { window.location.href = "/math?unit=trigonometry" }}>
                     <UnitBackground style={trigonometryBgStyle}></UnitBackground>
                     <UnitTitle>Trigonometry</UnitTitle>
                     <Description>
-                        Trigonometry is a branch of mathematics that studies relationships between side lengths and angles of triangles. 
+                        Trigonometry is a branch of mathematics that studies relationships between side lengths and angles of triangles.
                         The field emerged in the Hellenistic world during the 3rd century BC from applications of geometry to astronomical studies.
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/trigonometry?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/trigonometry?action=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=trigonometry&action=learn" }}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=trigonometry&action=practice" }}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
             <Unit className="unit">
-                <div onClick={() => {window.location.href = "/math/geometry"}}>
+                <div onClick={() => { window.location.href = "/math?unit=geometry" }}>
                     <UnitBackground style={geometryBgStyle}></UnitBackground>
                     <UnitTitle>Geometry</UnitTitle>
                     <Description>
-                        Geometry (from the Ancient Greek: γεωμετρία; geo- "earth", -metron "measurement") is, with arithmetic, one of the oldest branches of mathematics. 
+                        Geometry (from the Ancient Greek: γεωμετρία; geo- "earth", -metron "measurement") is, with arithmetic, one of the oldest branches of mathematics.
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/geometry?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/geometry?actoion=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=geometry&action=learn" }}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => { window.location.href = "/math?unit=geometry&actoion=practice" }}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
 
             <Outlet />
