@@ -120,8 +120,8 @@ const Math = () => {
                         This is useful for several reasons. 
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/algebra/learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/algebra/practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/algebra?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/algebra?action=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
             <Unit className="unit">
                 <div onClick={() => {window.location.href = "/math/trigonometry"}}>
@@ -132,8 +132,8 @@ const Math = () => {
                         The field emerged in the Hellenistic world during the 3rd century BC from applications of geometry to astronomical studies.
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/trigonometry/learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/trigonometry/practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/trigonometry?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/trigonometry?action=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
             <Unit className="unit">
                 <div onClick={() => {window.location.href = "/math/geometry"}}>
@@ -143,8 +143,8 @@ const Math = () => {
                         Geometry (from the Ancient Greek: γεωμετρία; geo- "earth", -metron "measurement") is, with arithmetic, one of the oldest branches of mathematics. 
                     </Description>
                 </div>
-                <Option onClick={() => {window.location.href = "/math/geometry/learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
-                <Option onClick={() => {window.location.href = "/math/geometry/practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/geometry?action=learn"}}>Start learning <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
+                <Option onClick={() => {window.location.href = "/math/geometry?actoion=practice"}}>Practice <box-icon name='right-arrow-alt' color='#ffffff'></box-icon></Option>
             </Unit>
 
             <Outlet />

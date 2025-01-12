@@ -1,6 +1,6 @@
 import './styles/App.css';
 import React, { useEffect } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, useLocation } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Root from './components/root';
 import Home from './components/home';
@@ -20,6 +20,28 @@ import Biology from './components/biology/main';
 
 import Cs from './components/cs/main';
 
+const RedirectPage = () => {
+  const location = useLocation();
+  const param = new URLSearchParams(location.search);
+  console.log(location.search);
+  // const subject = param.get("subject");
+  // const unit = param.get("unit");
+  const action = param.get("action");
+  console.log(action);
+
+  // const page = getPage(subject, unit, action);
+
+  if (action === "learn") {
+      return (
+        <AlgebraLearn />
+      )
+  } else if (action === "practice") {
+      return (
+        <AlgebraPractice />
+      )
+  }
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,102 +60,78 @@ const router = createBrowserRouter([
             element: <Algebra />,
             children: [
               {
-                path: "/math/algebra/learn",
-                element: <AlgebraLearn />,
-                children: [
-                  {
-                    path: "/math/algebra/learn/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/algebra/learn/lesson-2",
-                    element: <div>Lesson 2</div>
-                  }
-                ]
-              },
-              {
-                path: "/math/algebra/practice",
-                element: <AlgebraPractice />,
-                children: [
-                  {
-                    path: "/math/algebra/practice/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/algebra/practice/lesson-2",
-                    element: <div>Lesson 2</div>
-                  }
-                ]
+                path: "/math/algebra/",
+                element: <RedirectPage />,
               }
             ]
           },
           {
             path: "/math/trigonometry",
             element: <Trigonomety />,
-            children: [
-              {
-                path: "/math/trigonometry/learn",
-                element: <TrigonometryLearn />,
-                children: [
-                  {
-                    path: "/math/trigonometry/learn/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/trigonometry/learn/lesson-2",
-                    element: <div>Lesson 2</div>
-                  }
-                ],
-              },
-              {
-                path: "/math/trigonometry/practice",
-                element: <TrigonometryPractice />,
-                children: [
-                  {
-                    path: "/math/trigonometry/practice/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/trigonometry/practice/lesson-2",
-                    element: <div>Lesson 2</div>
-                  }
-                ]
-              }
-            ]
+            // children: [
+            //   {
+            //     path: "/math/trigonometry/learn",
+            //     element: <TrigonometryLearn />,
+            //     children: [
+            //       {
+            //         path: "/math/trigonometry/learn/lesson-1",
+            //         element: <div>Lesson 1</div>
+            //       },
+            //       {
+            //         path: "/math/trigonometry/learn/lesson-2",
+            //         element: <div>Lesson 2</div>
+            //       }
+            //     ],
+            //   },
+            //   {
+            //     path: "/math/trigonometry/practice",
+            //     element: <TrigonometryPractice />,
+            //     children: [
+            //       {
+            //         path: "/math/trigonometry/practice/lesson-1",
+            //         element: <div>Lesson 1</div>
+            //       },
+            //       {
+            //         path: "/math/trigonometry/practice/lesson-2",
+            //         element: <div>Lesson 2</div>
+            //       }
+            //     ]
+            //   }
+            // ]
           },
           {
             path: "/math/geometry",
             element: <Geometry />,
-            children: [
-              {
-                path: "/math/geometry/learn",
-                element: <GeometryLearn />,
-                children: [
-                  {
-                    path: "/math/geometry/learn/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/geometry/learn/lesson-2",
-                    element: <div>Lesson 2</div>
-                  },
-                ],
-              },
-              {
-                path: "/math/geometry/practice",
-                element: <GeometryPractice />,
-                children: [
-                  {
-                    path: "/math/geometry/practice/lesson-1",
-                    element: <div>Lesson 1</div>
-                  },
-                  {
-                    path: "/math/geometry/practice/lesson-2",
-                    element: <div>Lesson 2</div>
-                  }
-                ]
-              }
-            ]
+            // children: [
+            //   {
+            //     path: "/math/geometry/learn",
+            //     element: <GeometryLearn />,
+            //     children: [
+            //       {
+            //         path: "/math/geometry/learn/lesson-1",
+            //         element: <div>Lesson 1</div>
+            //       },
+            //       {
+            //         path: "/math/geometry/learn/lesson-2",
+            //         element: <div>Lesson 2</div>
+            //       },
+            //     ],
+            //   },
+            //   {
+            //     path: "/math/geometry/practice",
+            //     element: <GeometryPractice />,
+            //     children: [
+            //       {
+            //         path: "/math/geometry/practice/lesson-1",
+            //         element: <div>Lesson 1</div>
+            //       },
+            //       {
+            //         path: "/math/geometry/practice/lesson-2",
+            //         element: <div>Lesson 2</div>
+            //       }
+            //     ]
+            //   }
+            // ]
           },
         ]
       },

@@ -141,7 +141,7 @@ const Root = () => {
         <Section>
           <LINK to={`/home`} className={"nav-link"}>Home</LINK>
         </Section>
-        <Title to={`/home`} id='title'>Legend IBR</Title>
+        <Title to={`/home`} id='title' title='Home'>Legend IBR</Title>
         <Section>
           <LINK to={`/math`} className={"nav-link"}>Math</LINK>
           <LINK to={`/biology`} className={"nav-link"}>Biology</LINK>

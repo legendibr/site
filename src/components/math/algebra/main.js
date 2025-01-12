@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import 'boxicons';
 import learnBg from "../../../assets/math/algebra/images/learn.jpg";
 import practiceBg from "../../../assets/math/algebra/images/practice.jpg";
+import { use } from "react";
 
 const Div = styled.div`
     width: 100%;
@@ -61,6 +62,12 @@ const Description = styled.div`
 `;
 
 const Algebra = () => {
+    const navigate = useNavigate();
+
+    const handelNavigate = (action) => {
+        navigate(`/math/algebra?action=${action}`);
+    }
+
     useEffect(() => {
         document.title = "Legend IBR - Algebra";
 
@@ -95,12 +102,12 @@ const Algebra = () => {
 
     return (
         <Div>
-            <Method onClick={() => window.location.href = "/math/algebra/learn"}>
+            <Method onClick={() => handelNavigate("learn")} className="method">
                 <MethodBackground style={{ backgroundImage: `url(${learnBg})` }} />
                 <MethodTitle>Learn</MethodTitle>
                 <Description>Learn algebra through varies of examples and explainations.</Description>
             </Method>
-            <Method onClick={() => window.location.href = "/math/algebra/practice"}>
+            <Method onClick={() => handelNavigate("practice")} className="method">
                 <MethodBackground style={{ backgroundImage: `url(${practiceBg})` }} />
                 <MethodTitle>Practice</MethodTitle>
                 <Description>Practice your algebra skill by solving the given problems.</Description>
