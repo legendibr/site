@@ -1,0 +1,14 @@
+<!-- The base file that has generic stuff -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link rel="stylesheet" href="{% static 'root.css' %}">
+        {% block header %}{% endblock header %}
+    </head>
+    <body>
+        {% block content %}{% endblock content %}
+    </body>
+</html>
