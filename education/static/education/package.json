@@ -1,6 +1,6 @@
 {
-  "name": "hackathon-2025",
-  "homepage": "https://www.sas.edu.sg/",
+  "name": "site",
+  "homepage": "https://github.com/legendibr/site",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
