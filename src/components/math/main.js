@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import 'boxicons';
 import algebraBg from "../../assets/math/home/images/algebra.jpg";
 import trigonometryBg from "../../assets/math/home/images/trigonometry.jpg";
 import geometryBg from "../../assets/math/home/images/geometry.jpg";

@@ -10,58 +10,58 @@ import Biology from './components/biology/main';
 import Cs from './components/cs/main';
 
 const RedirectPage = () => {
-  const location = useLocation();
-  const param = new URLSearchParams(location.search);
-  const unit = param.get("unit");
-  const action = param.get("action");
-  const lesson = param.get("lesson");
-  const subject = location.pathname.split("/")[1];
-  const phpLink = "http://localhost:8000/redirect.php";
-  let link = "../assets";
-  link += unit !== null ? `/${unit}` : "";
-  link += action !== null ? `/${action}` : "";
-  link += lesson !== null ? `/${lesson}` : "";
-  link += ".md";
-  console.log(link);
+  // const location = useLocation();
+  // const param = new URLSearchParams(location.search);
+  // const unit = param.get("unit");
+  // const action = param.get("action");
+  // const lesson = param.get("lesson");
+  // const subject = location.pathname.split("/")[1];
+  // const phpLink = "http://localhost:8000/redirect.php";
+  // let link = "../assets";
+  // link += unit !== null ? `/${unit}` : "";
+  // link += action !== null ? `/${action}` : "";
+  // link += lesson !== null ? `/${lesson}` : "";
+  // link += ".md";
+  // console.log(link);
 
-  fetch(phpLink, {
-    "method": "POST",
-    "body": JSON.stringify({
-      "link": link
-    }),
-    "headers": {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(response => response.text())
-    .then(data => {
-      console.log(data);
-    })
-    .catch(err => {
-      console.error("Error:", err.message);
-    });
+  // fetch(phpLink, {
+  //   "method": "POST",
+  //   "body": JSON.stringify({
+  //     "link": link
+  //   }),
+  //   "headers": {
+  //     "Content-Type": "application/json"
+  //   }
+  // })
+  //   .then(response => response.text())
+  //   .then(data => {
+  //     console.log(data);
+  //   })
+  //   .catch(err => {
+  //     console.error("Error:", err.message);
+  //   });
 
-  if (unit !== null) {
-    switch (subject) {
-      case "math":
-        break;
+  // if (unit !== null) {
+  //   switch (subject) {
+  //     case "math":
+  //       break;
 
-      case "biology":
-        break;
+  //     case "biology":
+  //       break;
 
-      case "cs":
-        break;
+  //     case "cs":
+  //       break;
 
-      default:
-        break;
-    }
-  }
+  //     default:
+  //       break;
+  //   }
+  // }
 
-  return (
-    <div>
+  // return (
+  //   <div>
 
-    </div>
-  )
+  //   </div>
+  // )
 }
 
 const router = createBrowserRouter([
