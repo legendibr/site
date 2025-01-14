@@ -1,0 +1,94 @@
+/* static/css/root.css */
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../src/assets/global/Merriweather-Regular.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightyellow;
+}
+
+header nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    background: #333;
+    padding: 10px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    &:hover, &:active {
+        text-decoration: underline;
+    }
+}
+
+header nav .section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+header nav .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-family: serif;
+    font-size: 40px;
+    &:hover, &:active {
+        text-decoration: none;
+    }
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+ul.link-set {
+    visibility: hidden;
+    position: fixed;
+    right: -50%;
+    background: lightgrey;
+    color: white;
+    padding: 15px 30px;
+    line-height: 48px;
+    font-size: 24px;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+div.menu {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
