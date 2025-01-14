@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: Verdana, Geneva, sans-serif; 
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 html,
@@ -102,6 +102,7 @@ footer {
         visibility: hidden;
         opacity: 0;
     }
+
     to {
         visibility: visible;
         opacity: 1;

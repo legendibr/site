@@ -2,37 +2,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <title>{% block title %}Legend IBR {% endblock %}</title>
-        <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{% static 'base.css' %}">
-        <script src="{% static 'base.js' %}"></script>
-        {% block head %}{% endblock %}
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a class="title" id="title" title="Home" href="/">Legend IBR</a>
-                <a href="/math">Math</a>
-                <a href="/biology">Biology</a>
-                <a href="/cs">Computer<br>Science</a>
 
-                <i class="fa-solid fa-list" id="menuIcon" onclick="displayMenu()"></i>
-            </nav>
-            <ul id="menu">
-                <li><a href="/math">Math</a></li>
-                <li><a href="/biology">Biology</a></li>
-                <li><a href="/cs">Computer Science</a></li>
-            </ul>
-            {% block header %}{% endblock %}
-        </header>
-        <div>
-            {% block content %}{% endblock %}
-        </div>
-        <footer>
-            <p>&copy; 2025 Legend IBR</p>
-        </footer>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>{% block title %}Legend IBR {% endblock %}</title>
+    <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <script src="{% static 'base.js' %}"></script>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="title" id="title" title="Home" href="/">Legend IBR</a>
+            <a href="/math">Math</a>
+            <a href="/biology">Biology</a>
+            <a href="/cs">Computer<br>Science</a>
+
+            <i class="fa-solid fa-list" id="menuIcon" onclick="displayMenu()"></i>
+        </nav>
+        <ul id="menu">
+            <li><a href="/math">Math</a></li>
+            <li><a href="/biology">Biology</a></li>
+            <li><a href="/cs">Computer Science</a></li>
+        </ul>
+        {% block header %}{% endblock %}
+    </header>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2025 Legend IBR</p>
+    </footer>
+</body>
+
 </html>
