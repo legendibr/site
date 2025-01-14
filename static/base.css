@@ -1,11 +1,6 @@
-/* static/css/root.css */
-@font-face {
-    font-family: 'Merriweather';
-    src: url('../src/assets/global/Merriweather-Regular.ttf');
-}
-
 * {
     box-sizing: border-box;
+    font-family: Verdana, Geneva, sans-serif; 
 }
 
 html, body {
@@ -15,7 +10,7 @@ html, body {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     background-color: lightyellow;
 }
 
