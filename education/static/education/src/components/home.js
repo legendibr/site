@@ -138,7 +138,7 @@ const Signature = styled.div`
 const Home = () => {
     useEffect(() => {
         document.title = "Legend IBR - Home";
-        
+
         let learnMoresCopy = document.querySelectorAll('.learn-more');
         const handelResize = () => {
             const subjects = document.querySelectorAll('.subject');
@@ -178,7 +178,7 @@ const Home = () => {
 
         return () => {
             document.title = "Legend IBR";
-            
+
             window.removeEventListener('resize', handelResize);
         }
     }, []);
