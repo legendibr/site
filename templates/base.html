@@ -8,19 +8,24 @@
         <title>{% block title %}Legend IBR {% endblock %}</title>
         <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'base.css' %}">
-        <script src="{% static 'base.js'}"></script>
+        <script src="{% static 'base.js' %}"></script>
         {% block head %}{% endblock %}
     </head>
     <body>
         <header>
             <nav>
-                <a class="title" id="title" href="/">Legend IBR</a>
+                <a class="title" id="title" title="Home" href="/">Legend IBR</a>
                 <a href="/math">Math</a>
                 <a href="/biology">Biology</a>
-                <!-- TODO: At some point, use a flexbox here -->
-                 <!-- Done -->
                 <a href="/cs">Computer<br>Science</a>
+
+                <i class="fa-solid fa-list" id="menuIcon" onclick="displayMenu()"></i>
             </nav>
+            <ul id="menu">
+                <li><a href="/math">Math</a></li>
+                <li><a href="/biology">Biology</a></li>
+                <li><a href="/cs">Computer Science</a></li>
+            </ul>
             {% block header %}{% endblock %}
         </header>
         <div>

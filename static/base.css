@@ -8,6 +8,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -54,24 +55,35 @@ header nav .title {
     }
 }
 
-ul.link-set {
-    visibility: hidden;
-    position: fixed;
-    right: -50%;
-    background: lightgrey;
+header ul {
+    position: absolute;
+    margin: 0;
+    background: #1a1a1a;
     color: white;
-    padding: 15px 30px;
-    line-height: 48px;
-    font-size: 24px;
-    z-index: 10;
-    transition: all 0.3s ease;
+    padding: 5px 20px;
+    font-size: 20px;
+    line-height: 32px;
+    width: 150px;
+    right: 0;
+    visibility: hidden;
+    transition: all 0.3s;
 }
 
-div.menu {
-    display: flex;
+header ul li a {
+    color: white;
+    font-family: serif;
+
+    &:hover,
+    &:active {
+        background-color: grey;
+    }
+}
+
+header nav i {
+    display: none !important;
+    font-size: 20px;
+    color: white;
     cursor: pointer;
-    justify-content: center;
-    align-items: center;
 }
 
 footer {
@@ -83,4 +95,25 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header nav i {
+        display: block !important;
+    }
+
+    header nav a:not(.title) {
+        display: none;
+    }
 }
