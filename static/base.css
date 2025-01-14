@@ -1,14 +1,10 @@
 /* static/css/root.css */
-@font-face {
-    font-family: 'Merriweather';
-    src: url('../src/assets/global/Merriweather-Regular.ttf');
-}
-
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -29,7 +25,7 @@ header nav {
     align-items: center;
     gap: 25px;
     background: #333;
-    padding: 10px;
+    padding: 10px 15px;
 }
 
 header nav a {
@@ -38,39 +34,24 @@ header nav a {
     font-size: 20px;
     cursor: pointer;
     text-align: center;
-    &:hover, &:active {
+
+    &:hover,
+    &:active {
         text-decoration: underline;
     }
 }
 
-header nav .section {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-}
-
 header nav .title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: left;
     font-weight: bold;
     font-family: serif;
     font-size: 40px;
-    &:hover, &:active {
+    flex: 1;
+
+    &:hover,
+    &:active {
         text-decoration: none;
     }
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
 ul.link-set {
@@ -91,4 +72,15 @@ div.menu {
     cursor: pointer;
     justify-content: center;
     align-items: center;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
