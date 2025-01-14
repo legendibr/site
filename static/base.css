@@ -33,15 +33,38 @@ body {
     align-items: center;
     gap: 25px;
     background: #333;
-    padding: 15px 10px 15px 10px;
+    padding: 15px 20px 15px 20px;
     color: white;
 
-    height: 60%; /* x% of what, idk */
+    /* height: 100%; /* x% of what, idk */
+    /* 100% when the menu bar is full (sizing needs to be the same on mobile) */
+    height: 78px;
 }
 .main-navbar a {
     color: white;
     text-decoration: none;
 }
+
+#mobile-navbar-burger {
+    display: none;
+}
+#mobile-navbar-popup {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    #mobile-navbar-burger {
+        display: block;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
+    #mobile-navbar-popup {
+        position: absolute;
+        background: #333;
+    }
+}
+
 /* Navbar links */
 .links {
     display: flex;

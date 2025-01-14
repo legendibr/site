@@ -14,7 +14,7 @@
     <body>
         <header>
             <nav class="main-navbar">
-                <div class="links">
+                <div class="links hide-mobile">
                     {% if user.is_authenticated %}
                         <form hidden action="{% url 'logout' %}" method="POST">
                             {% csrf_token %}
@@ -32,14 +32,20 @@
                 </div>
                 <!-- TODO: Probably fine without title here-->
                 <a class="title" href="/">LegendIBR</a>
-                <div class="links">
+                <div class="links hide-mobile">
                     <!-- TODO: Use django links -->
                     <a href="/math">Math</a>
                     <a href="/biology">Biology</a>
                     <!-- TODO: Use CSS wrap -->
                     <a href="/cs">Computer<br>Science</a>
                 </div>
+                
+                <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
             </nav>
+            <div id="mobile-navbar-popup">
+                <ul></ul>
+            </div>
+
             {% block header %}{% endblock %}
         </header>
         <div id="main">
