@@ -10,52 +10,60 @@ html, body {
 }
 
 body {
-    /* font-family: Arial, sans-serif; */
     background-color: lightyellow;
+
+    /*  Use flexbox to keep footer at the bottom of the page, 
+        even if the page is short.
+        https://stackoverflow.com/a/12253099/21322342
+    */
+    display: flex;
+    flex-direction: column;
+}
+/* block content */
+#main {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
 }
 
-header nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+/* header navbar */
+.main-navbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 25px;
     background: #333;
-    padding: 10px;
-}
+    padding: 15px 10px 15px 10px;
+    color: white;
 
-header nav a {
+    height: 60%; /* x% of what, idk */
+}
+.main-navbar a {
     color: white;
     text-decoration: none;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-    &:hover, &:active {
-        text-decoration: underline;
-    }
 }
-
-header nav .section {
+/* Navbar links */
+.links {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 25px;
 }
 
-header nav .title {
+.links a {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.title {
+    /* Center title */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-weight: bold;
-    font-family: serif;
-    font-size: 40px;
-    &:hover, &:active {
-        text-decoration: none;
-    }
+    font-weight: 300;
+    font-size: 38px;
+
 }
 
 footer {
@@ -63,11 +71,21 @@ footer {
     color: white;
     text-align: center;
     padding: 0.5rem;
-    position: absolute;
-    bottom: 0;
     width: 100%;
 }
 
+
+/* Aggresive, mainly used for user_management urls */
+/*
+.center {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+*/
+
+/* Commenting this because I don't see it being used anywhere*/
+/*
 ul.link-set {
     visibility: hidden;
     position: fixed;
@@ -87,3 +105,4 @@ div.menu {
     justify-content: center;
     align-items: center;
 }
+*/

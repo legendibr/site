@@ -5,33 +5,51 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <title>{% block title %}Legend IBR {% endblock %}</title>
+        <title>{% block title %}LegendIBR {% endblock %}</title>
         <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'base.css' %}">
-        <script src="{% static 'base.js'}"></script>
+        <script src="{% static 'base.js' %}"></script>
         {% block head %}{% endblock %}
     </head>
     <body>
         <header>
-            <nav>
-                <div class="section">
-                    <a href="/">Home</a>
+            <nav class="main-navbar">
+                <div class="links">
+                    {% if user.is_authenticated %}
+                        <form hidden action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                        </form>
+                        <a href="#" onclick="event.target.previousElementSibling.submit();">Logout</a>
+
+                        <!-- account settings popout  -->
+                        <a onclick="">Account Settings</a>
+                    {% else %}
+                        <!-- gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
+                            TODO: IDK if the redirect protection thing works 
+                        -->
+                        <a href="{% url 'login' %}?next=/">Login</a>
+                    {% endif %}
                 </div>
-                <a class="title" id="title" href="/">Legend IBR</a>
-                <div class="section">
+                <!-- TODO: Probably fine without title here-->
+                <a class="title" href="/">LegendIBR</a>
+                <div class="links">
+                    <!-- TODO: Use django links -->
                     <a href="/math">Math</a>
                     <a href="/biology">Biology</a>
-                    <!-- TODO: At some point, use a flexbox here -->
+                    <!-- TODO: Use CSS wrap -->
                     <a href="/cs">Computer<br>Science</a>
                 </div>
             </nav>
             {% block header %}{% endblock %}
         </header>
-        <div>
+        <div id="main">
             {% block content %}{% endblock %}
+
+            <!-- I used this for testing the footer positioning -->
+            {# {% lorem 10 p %} #}
         </div>
         <footer>
-            <p>&copy; 2025 Legend IBR</p>
+            <p>&copy; 2025 LegendIBR</p>
         </footer>
     </body>
 </html>
