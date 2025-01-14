@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, inital-scale=1.0">
     <title>{% block title %}Legend IBR {% endblock %}</title>
     <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'root.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <script src="{% static 'base.js'}"></script>
     {% block head %}{% endblock %}
 </head>
 
@@ -22,94 +23,23 @@
             <div class="section">
                 <a href="/math">Math</a>
                 <a href="/biology">Biology</a>
+                <!-- TODO: At some point, use a flexbox here -->
                 <a href="/cs">Computer<br>Science</a>
             </div>
         </nav>
         {% block header %}{% endblock %}
     </header>
 
-    <main>
+    <div>
         {% block content %}{% endblock %}
-    </main>
+    </div>
 
     <footer>
         <p>&copy; 2025 Legend IBR</p>
     </footer>
 
     <script type="text/javascript">
-        const handelResize = () => {
-            const title = document.getElementById('title');
-            const nav = document.querySelector('nav');
-            const links = document.querySelectorAll('a');
-
-            if (window.innerWidth <= 768) {
-                const linkSet = document.createElement('ul');
-                linkSet.classList.add('link-set');
-
-                for (const link of links) {
-                    if (link.className === "title") {
-                        continue;
-                    }
-
-                    const linkLi = document.createElement('li');
-                    linkLi.innerHTML = link.innerHTML;
-                    linkLi.onclick = () => {
-                        link.click();
-                        linkLi.style.visibility = "hidden";
-                        linkLi.style.right = "-50%";
-                    }
-
-                    linkSet.appendChild(linkLi);
-                    link.style.display = "none";
-                }
-                document.body.appendChild(linkSet);
-
-                const menu = document.createElement('div');
-                menu.id = 'menu';
-                menu.classList.add('menu');
-                menu.onclick = () => {
-                    linkSet.style.visibility = linkSet.style.visibility === "hidden" ? "visible" : "hidden"
-                    linkSet.style.right = linkSet.style.right === '-50%' ? '0px' : '-50%';
-                }
-                const menuIcon = document.createElement('i');
-                menuIcon.classList.add("fa-solid", "fa-list");
-                menuIcon.style.color = 'white';
-                const menuTitle = document.createElement('a');
-                menuTitle.innerHTML = 'Subjects';
-                menuTitle.style.color = 'white';
-                menuTitle.style.textDecoration = 'none';
-                menuTitle.style.fontSize = '20px';
-                menuTitle.style.textAlign = 'center';
-
-                title.style.position = "static";
-                title.style.fontSize = "30px";
-                title.style.transform = "none";
-
-                menu.appendChild(menuIcon);
-                menu.appendChild(menuTitle);
-                nav.appendChild(menu);
-            } else {
-                title.style.fontSize = '40px';
-                title.style.position = 'absolute';
-                title.style.left = '50%';
-                title.style.transform = 'translateX(-50%)';
-
-                for (const link of links) {
-                    link.style.display = "block";
-                }
-
-                try {
-                    document.getElementById('menu').remove();
-                    document.querySelector("ul").remove();
-                }
-                catch (e) {
-
-                }
-            }
-        }
-
-        window.addEventListener('resize', handelResize);
-        handelResize();
+        
     </script>
 </body>
 
