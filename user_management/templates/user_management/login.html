@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<!-- Location of redirect -->
+{% if next %}
+    {% if user.is_authenticated %}
+        <p>You are already logged in.</p>
+    {% else %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <!-- Form needs styling -->
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    {% endif %}
+{% else %}
+    <p>Need redirect location (next)</p>
+{% endif %}
+{% endblock content %}
