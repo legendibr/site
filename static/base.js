@@ -2,33 +2,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const burger = document.querySelector("#mobile-navbar-burger");
     const popup = document.querySelector("#mobile-navbar-popup");
     
-    const navbar = document.querySelector(".main-navbar");
-    const title = document.querySelector(".title");
-    const links = document.querySelectorAll(".links");
+
+    const before = document.querySelector(".links");
+    const after = document.querySelectorAll(".links")[1];
+
+    const before_links = Array.from(before.children);
+    const after_links = Array.from(after.children);
+    
+    const target = document.querySelector("#mobile-navbar-popup > ul");
 
     let isPopupOpen = false;
     
     let closePopup = () => {
         popup.style.display = "none";
 
-        links[0].classList.add("hide-mobile");
-        links[1].classList.add("hide-mobile");
-
-        navbar.insertBefore(links[0], title);
-        navbar.insertBefore(links[1], title.nextSibling);
-
+        for (let link of before_links){
+            before.append(link);
+        }
+        for (let link of after_links){
+            after.append(link);
+        }
+        
         isPopupOpen = false;
     };
     /* Move all the links */
     let openPopup = () => {
+        target.innerHTML = ""; // Remove all children
+
         let frag = document.createDocumentFragment();
+    
+        for (let link of [...before_links, ...after_links]){
+            let li = document.createElement("li");
+            li.append(link);
+            frag.append(li);
+        }
 
-        links[0].classList.remove("hide-mobile");
-        links[1].classList.remove("hide-mobile");
-        frag.append(links[0]);
-        frag.append(links[1]);
-
-        popup.appendChild(frag);
+        target.appendChild(frag);
         popup.style.display = "block";
 
         isPopupOpen = true;
@@ -41,6 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             // open
             openPopup();
+        }
+    });
+
+    // If the popup menu when the page gets resized, it needs to be closed
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 1024){
+            closePopup();
         }
     });
 });

@@ -50,19 +50,17 @@ body {
 }
 #mobile-navbar-popup {
     display: none;
+
+    position: absolute;
+    background: #333;
 }
 
-@media screen and (max-width: 1024px) {
-    #mobile-navbar-burger {
-        display: block;
-    }
-    .hide-mobile {
-        display: none !important;
-    }
-    #mobile-navbar-popup {
-        position: absolute;
-        background: #333;
-    }
+#mobile-navbar-popup > ul {
+    list-style: none;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 /* Navbar links */
@@ -73,10 +71,19 @@ body {
     gap: 25px;
 }
 
-.links a {
+.links > a, #mobile-navbar-popup > ul > li > a {
     color: white;
     font-size: 20px;
     text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    #mobile-navbar-burger {
+        display: block;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
 }
 
 .title {
