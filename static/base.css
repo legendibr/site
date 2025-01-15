@@ -53,6 +53,7 @@ body {
 
     position: absolute;
     background: #333;
+    z-index: 1;
 }
 
 #mobile-navbar-popup > ul {
