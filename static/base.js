@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function mobileNavbar(){
     const burger = document.querySelector("#mobile-navbar-burger");
     const popup = document.querySelector("#mobile-navbar-popup");
     
@@ -59,4 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             closePopup();
         }
     });
+}
+document.addEventListener("DOMContentLoaded", () => {
+    mobileNavbar();
 });
