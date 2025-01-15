@@ -1,4 +1,16 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Legend IBR - Login{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'user_management/css/login.css' %}">
+<style>
+    body {
+        background: url("{% static 'user_management/images/login.jpg' %}");
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="center">
 
@@ -11,17 +23,20 @@
     {% if user.is_authenticated %}
         <p>You are already logged in.</p>
     {% else %}
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <!-- Form needs styling -->
-            {{ form.as_p }}
-            <input type="submit" value="Login">
-            <input type="hidden" name="next" value="{{ next }}">
-        </form>
+        <div class='form-wrapper'>
+            <h1>Login</h1>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <!-- Form needs styling -->
+                {{ form.as_p }}
+                <input type="submit" value="Login">
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+        </div>
     {% endif %}
 {% else %}
     <p>Need redirect location (next)</p>
 {% endif %}
 
 </div>
-{% endblock content %}
+{% endblock %}
