@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="center">
 
 {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
@@ -21,4 +22,6 @@
 {% else %}
     <p>Need redirect location (next)</p>
 {% endif %}
+
+</div>
 {% endblock content %}

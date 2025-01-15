@@ -13,24 +13,39 @@ body {
 
 body {
     background-color: lightyellow;
+
+    /*  Use flexbox to keep footer at the bottom of the page, 
+        even if the page is short.
+        https://stackoverflow.com/a/12253099/21322342
+    */
+    display: flex;
+    flex-direction: column;
+}
+/* block content */
+#main {
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
 }
 
-header nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+/* header navbar */
+.main-navbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 25px;
     background: #333;
-    padding: 10px 15px;
-}
+    padding: 15px 20px 15px 20px;
+    color: white;
 
-header nav a {
+    /* height: 100%; /* x% of what, idk */
+    /* 100% when the menu bar is full (sizing needs to be the same on mobile) */
+    height: 78px;
+}
+.main-navbar a {
     color: white;
     text-decoration: none;
+<<<<<<< HEAD
     font-size: 20px;
     cursor: pointer;
     text-align: center;
@@ -102,8 +117,32 @@ div.subject {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+=======
+}
+
+#mobile-navbar-burger {
+    display: none;
+}
+#mobile-navbar-popup {
+    display: none;
+
+    position: absolute;
+    background: #333;
+    z-index: 1;
+}
+
+#mobile-navbar-popup > ul {
+    list-style: none;
+    padding: 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Navbar links */
+.links {
+>>>>>>> b1a2d11c73d9382243f79a00ac1911924f55459a
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -118,6 +157,7 @@ div.subject {
     }
 }
 
+<<<<<<< HEAD
 div.subject .subject-title {
     position: relative;
     height: 100%;
@@ -146,6 +186,31 @@ div.subject .subject-title button {
     &:active {
         opacity: 0.8;
     }
+=======
+.links > a, #mobile-navbar-popup > ul > li > a {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1024px) {
+    #mobile-navbar-burger {
+        display: block;
+    }
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+.title {
+    /* Center title */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 300;
+    font-size: 38px;
+
+>>>>>>> b1a2d11c73d9382243f79a00ac1911924f55459a
 }
 
 div.subject .subject-info {
@@ -185,6 +250,7 @@ footer {
     background: #333;
     color: white;
     text-align: center;
+<<<<<<< HEAD
     font-size: 16px;
     font-weight: bold;
     position: absolute;
@@ -227,3 +293,41 @@ footer {
         display: none;
     }
 }
+=======
+    padding: 0.5rem;
+    width: 100%;
+}
+
+
+/* Aggresive, mainly used for user_management urls */
+/*
+.center {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+*/
+
+/* Commenting this because I don't see it being used anywhere*/
+/*
+ul.link-set {
+    visibility: hidden;
+    position: fixed;
+    right: -50%;
+    background: lightgrey;
+    color: white;
+    padding: 15px 30px;
+    line-height: 48px;
+    font-size: 24px;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+div.menu {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+*/
+>>>>>>> b1a2d11c73d9382243f79a00ac1911924f55459a

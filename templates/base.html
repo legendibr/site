@@ -2,41 +2,60 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <title>{% block title %}LegendIBR {% endblock %}</title>
+        <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'base.css' %}">
+        <script src="{% static 'base.js' %}"></script>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="main-navbar">
+                <div class="links hide-mobile">
+                    {% if user.is_authenticated %}
+                        <form hidden action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                        </form>
+                        <a href="#" onclick="event.target.previousElementSibling.submit();">Logout</a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, inital-scale=1.0">
-    <title>{% block title %}Legend IBR {% endblock %}</title>
-    <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="icon" href="{% static 'favicon.ico' %}">
-    <script src="{% static 'base.js' %}"></script>
-    {% block head %}{% endblock %}
-</head>
+                        <!-- account settings popout  -->
+                        <a onclick="">Account Settings</a>
+                    {% else %}
+                        <!-- gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
+                            TODO: IDK if the redirect protection thing works 
+                        -->
+                        <a href="{% url 'login' %}?next=/">Login</a>
+                    {% endif %}
+                </div>
+                <!-- TODO: Probably fine without title here-->
+                <a class="title" href="/">LegendIBR</a>
+                <div class="links hide-mobile">
+                    <!-- TODO: Use django links -->
+                    <a href="/math">Math</a>
+                    <a href="/biology">Biology</a>
+                    <!-- TODO: Use CSS wrap -->
+                    <a href="/cs">Computer<br>Science</a>
+                </div>
+                
+                <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
+            </nav>
+            <div id="mobile-navbar-popup">
+                <ul></ul>
+            </div>
 
-<body>
-    <header>
-        <nav>
-            <a class="title" id="title" title="Home" href="/">Legend IBR</a>
-            <a href="/math">Math</a>
-            <a href="/biology">Biology</a>
-            <a href="/computer-science">Computer<br>Science</a>
+            {% block header %}{% endblock %}
+        </header>
+        <div id="main">
+            {% block content %}{% endblock %}
 
-            <i class="fa-solid fa-list" id="menuIcon" onclick="displayMenu()"></i>
-        </nav>
-        <ul id="menu">
-            <li><a href="/math">Math</a></li>
-            <li><a href="/biology">Biology</a></li>
-            <li><a href="/computer-science">Computer Science</a></li>
-        </ul>
-        {% block header %}{% endblock %}
-    </header>
-    <div id="main">
-        {% block content %}{% endblock %}
-    </div>
-    <footer>
-        <p>&copy; 2025 Legend IBR</p>
-    </footer>
-</body>
-
+            <!-- I used this for testing the footer positioning -->
+            {# {% lorem 10 p %} #}
+        </div>
+        <footer>
+            <p>&copy; 2025 LegendIBR</p>
+        </footer>
+    </body>
 </html>
