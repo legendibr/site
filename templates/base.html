@@ -13,13 +13,15 @@
     </head>
     <body>
         <header>
+            {% if user.is_authenticated %}
+                <form id="logout" hidden action="{% url 'user_management:logout' %}" method="POST">
+                    {% csrf_token %}
+                </form>
+            {% endif %}
             <nav class="main-navbar">
                 <div class="links hide-mobile">
                     {% if user.is_authenticated %}
-                        <form hidden action="{% url 'logout' %}" method="POST">
-                            {% csrf_token %}
-                        </form>
-                        <a href="#" onclick="event.target.previousElementSibling.submit();">Logout</a>
+                        <a href="#" onclick="document.querySelector('#logout').submit();">Logout</a>
 
                         <!-- account settings popout  -->
                         <a onclick="">Account Settings</a>
@@ -27,7 +29,7 @@
                         <!-- gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
                             TODO: IDK if the redirect protection thing works 
                         -->
-                        <a href="{% url 'login' %}?next=/">Login</a>
+                        <a href="{% url 'user_management:login' %}?next=/">Login</a>
                     {% endif %}
                 </div>
                 <!-- TODO: Probably fine without title here-->

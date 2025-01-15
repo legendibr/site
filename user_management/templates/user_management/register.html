@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="center">
+
+{% if form.errors %}
+    <p>Unable to create user. Please make sure you have a unique username, and your password satifies the criteria.</p>
+{% endif %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register">
+</form>
+
+</div>
+{% endblock %}
