@@ -23,6 +23,15 @@
     {% if user.is_authenticated %}
         <p>You are already logged in.</p>
     {% else %}
+<<<<<<< HEAD
+        <form method="post" action="{% url 'user_management:login' %}">
+            {% csrf_token %}
+            <!-- Form needs styling -->
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+=======
         <div class='form-wrapper'>
             <h1>Login</h1>
             <form method="post" action="{% url 'login' %}">
@@ -33,6 +42,7 @@
                 <input type="hidden" name="next" value="{{ next }}">
             </form>
         </div>
+>>>>>>> origin/main
     {% endif %}
 {% else %}
     <p>Need redirect location (next)</p>

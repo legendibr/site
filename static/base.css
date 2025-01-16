@@ -1,12 +1,14 @@
 * {
     box-sizing: border-box;
-    font-family: Verdana, Geneva, sans-serif; 
+    font-family: Verdana, Geneva, sans-serif;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -19,6 +21,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 /* block content */
 #main {
     flex: 1;
@@ -40,6 +43,7 @@ body {
     /* 100% when the menu bar is full (sizing needs to be the same on mobile) */
     height: 78px;
 }
+
 .main-navbar a {
     color: white;
     text-decoration: none;
@@ -48,6 +52,7 @@ body {
 #mobile-navbar-burger {
     display: none;
 }
+
 #mobile-navbar-popup {
     display: none;
 
@@ -56,7 +61,7 @@ body {
     z-index: 1;
 }
 
-#mobile-navbar-popup > ul {
+#mobile-navbar-popup>ul {
     list-style: none;
     padding: 15px;
     display: flex;
@@ -65,23 +70,32 @@ body {
 }
 
 /* Navbar links */
+/* The initial one was for subject introduction, not for navbar link */
+/* Changed to navbar links style */
 .links {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
 }
 
-.links > a, #mobile-navbar-popup > ul > li > a {
+.links>a,
+#mobile-navbar-popup>ul>li>a {
     color: white;
     font-size: 20px;
     text-align: center;
+    width: 100%;
+
+    /* Added hover */
+    &:hover, &:active {
+        text-decoration: underline;
+    }
 }
 
 @media screen and (max-width: 1024px) {
     #mobile-navbar-burger {
         display: block;
     }
+
     .hide-mobile {
         display: none !important;
     }
@@ -94,7 +108,6 @@ body {
     transform: translateX(-50%);
     font-weight: 300;
     font-size: 38px;
-
 }
 
 footer {
@@ -112,28 +125,5 @@ footer {
     width: 80%;
     margin: auto;
     text-align: center;
-}
-*/
-
-/* Commenting this because I don't see it being used anywhere*/
-/*
-ul.link-set {
-    visibility: hidden;
-    position: fixed;
-    right: -50%;
-    background: lightgrey;
-    color: white;
-    padding: 15px 30px;
-    line-height: 48px;
-    font-size: 24px;
-    z-index: 10;
-    transition: all 0.3s ease;
-}
-
-div.menu {
-    display: flex;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
 }
 */
