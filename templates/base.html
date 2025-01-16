@@ -4,8 +4,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, inital-scale=1.0">
-        <title>{% block title %}LegendIBR {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LegendIBR {% block title %}{% endblock %}</title>
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
         <script src="https://kit.fontawesome.com/08eed679a2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'base.css' %}">
         <script src="{% static 'base.js' %}"></script>
