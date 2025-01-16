@@ -24,7 +24,10 @@
         <p>You are already logged in.</p>
     {% else %}
         <div class='form-wrapper'>
-            <h1>Login</h1>
+            <div class="form-head">
+                <img src="{% static 'user_management/images/logo.png' %}" width="100" height="100">
+                <h1>Login</h1>
+            </div>
             <form method="post" action="{% url 'user_management:login' %}">
                 {% csrf_token %}
                 <!-- Form needs styling -->

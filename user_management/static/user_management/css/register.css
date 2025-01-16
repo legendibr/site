@@ -23,8 +23,15 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form>h1 {
-    text-align: center;
+form .form-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form .form-head>img {
+    margin: -25px 0 -40px;
 }
 
 form input {

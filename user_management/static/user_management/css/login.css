@@ -21,8 +21,15 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-wrapper>h1 {
-    text-align: center;
+.form-wrapper .form-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-wrapper .form-head>img {
+    margin: -25px 0 -40px;
 }
 
 .form-wrapper input {
