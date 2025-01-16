@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}- Register{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'user_management/css/register.css' %}">
+<style>
+    body {
+        background: url("{% static 'user_management/images/register.jpg' %}")
+    }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="center">
@@ -8,8 +19,10 @@
 {% endif %}
 
 <form action="" method="POST">
+    <h1>Register</h1>
     {% csrf_token %}
     {{ form.as_p }}
+    <p class='login-hint'>Already have an account? <a href='#'>Login!</a></p>
     <input type="submit" value="Register">
 </form>
 

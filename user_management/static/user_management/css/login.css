@@ -13,7 +13,6 @@ body {
 }
 
 .form-wrapper {
-    display: inline-block;
     text-align: left;
     padding: 20px;
     border: 1px solid #ccc;
@@ -42,7 +41,8 @@ body {
     cursor: pointer;
     transition: all 0.3s;
 
-    &:hover, &:active {
+    &:hover,
+    &:active {
         background-color: #444;
     }
 }

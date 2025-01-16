@@ -1,0 +1,72 @@
+/* The blurred background image */
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+}
+
+/* To keep the form at the center of the screen */
+.center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form>h1 {
+    text-align: center;
+}
+
+form input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form ul {
+    margin-top: -20px;
+}
+
+form .login-hint {
+    margin-bottom: -5px;
+    font-style: italic;
+}
+
+form .login-hint>a {
+    color: blue;
+
+    &:active {
+        color: red;
+    }
+}
+
+/* The submit button at the bottom */
+form input[type=submit] {
+    background: #333;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s;
+
+    &:hover,
+    &:active {
+        background: #444;
+    }
+}
