@@ -32,7 +32,7 @@
                         <!-- gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
                             TODO: IDK if the redirect protection thing works 
                         -->
-                        <a href="{% url 'user_management:login' %}?next=/">Login</a>
+                        <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
                         <a href="{% url 'user_management:register' %}">Register</a>
                     {% endif %}
                 </div>
