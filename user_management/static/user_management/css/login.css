@@ -12,7 +12,7 @@ body {
     height: 100%;
 }
 
-.form-wrapper {
+form {
     text-align: left;
     padding: 20px;
     border: 1px solid #ccc;
@@ -21,18 +21,18 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-wrapper .form-head {
+form>.form-head {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.form-wrapper .form-head>img {
+form>.form-head>img {
     margin: -25px 0 -40px;
 }
 
-.form-wrapper input {
+form input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -40,7 +40,7 @@ body {
     border-radius: 5px;
 }
 
-.form-wrapper input[type=submit] {
+form input[type=submit] {
     margin-top: 20px;
     background-color: #333;
     font-weight: bold;
@@ -51,5 +51,20 @@ body {
     &:hover,
     &:active {
         background-color: #444;
+    }
+}
+
+form .register-hint {
+    margin-bottom: -5px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+form .register-hint a {
+    color: blue;
+    font-weight: bold;
+
+    &:active {
+        color: red;
     }
 }

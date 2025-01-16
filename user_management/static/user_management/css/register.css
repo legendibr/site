@@ -57,6 +57,7 @@ form .login-hint {
 
 form .login-hint>a {
     color: blue;
+    font-weight: bold;
 
     &:active {
         color: red;
