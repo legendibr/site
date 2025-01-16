@@ -25,7 +25,7 @@
     {% else %}
         <div class='form-wrapper'>
             <h1>Login</h1>
-            <form method="post" action="{% url 'login' %}">
+            <form method="post" action="{% url 'user_management:login' %}">
                 {% csrf_token %}
                 <!-- Form needs styling -->
                 {{ form.as_p }}
