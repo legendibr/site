@@ -4,6 +4,7 @@ from .models import Comment
 
 User = get_user_model()
 
+
 class CreateCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -12,5 +13,7 @@ class CreateCommentForm(forms.ModelForm):
 
         widgets = {
             # css attrs for form fields
-            "text": forms.Textarea(attrs={"placeholder": "Write a comment here...", "rows": 3})
+            "text": forms.Textarea(
+                attrs={"placeholder": "Write a comment here...", "rows": 3}
+            )
         }

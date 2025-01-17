@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm
 def index(request):
     return HttpResponse("user management")
 
+
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
