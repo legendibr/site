@@ -1,41 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'education/education.html' %}
 {% load static %}
 
-{% block title%}- Math{% endblock %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'education/css/math.css' %}">
+{% block title %}
+  - Math
 {% endblock %}
 
-{% block content %}
-    <h1>Math</h1>
-    <div class="subject">
-        <div class="background" style="background-image: url('{% static "education/images/algebra.jpg" %}');"></div>
-        <span>Algebra</span>
-        <p>
-            Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables. This is useful because it lets us write general rules in a way that applies to many different situations. Algebra is a powerful tool for problem solving in science, engineering, economics, finance, architecture, ship-building and many other day-to-day tasks.
-        </p>
-        <div class="action">
-            <a>Start learning</a>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-        <div class="action">
-            <a>Test your knowledge</a>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-    </div>
-    <div class="subject">
-        <div class="background" style="background-image: url('{% static "education/images/geometry.jpg" %}');"></div>
-        <span>Geometry</span>
-        <p>
-            Geometry is a branch of mathematics that studies the sizes, shapes, positions angles and dimensions of things. Flat shapes like squares, circles, and triangles are a part of flat geometry and are called 2D shapes. These shapes have only 2 dimensions, the length and the width. Cubes, prisms, pyramids, spheres, cones, and cylinders are examples of 3D shapes. These shapes have 3 dimensions, the length, the width, and the height.
-        </p>
-        <div class="action">
-            <a>Start learning</a>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-        <div class="action">
-            <a>Test your knowledge</a>
-            <i class="fa-solid fa-arrow-right"></i>
-        </div>
-    </div>
+{% block mainTitle %}
+  <h1>Math</h1>
 {% endblock %}

@@ -36,6 +36,12 @@ h1 {
     background: rgba(0, 0, 0, 0.5);
     border: .5px solid black;
     color: white;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        text-decoration: underline;
+    }
 }
 
 .subject p {
@@ -46,12 +52,6 @@ h1 {
 
 .subject a {
     font-size: 18px;
-    cursor: pointer;
-
-    &:hover,
-    &:active {
-        text-decoration: underline;
-    }
 }
 
 .subject>.background {
