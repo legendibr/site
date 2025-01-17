@@ -38,11 +38,9 @@
                 </div>
                 <a class="title" href="/">LegendIBR</a>
                 <div class="links hide-mobile">
-                    <!-- TODO: Use django links -->
-                    <!-- ⬆️ will be added later when the view is available -->
-                    <a href="#">Math</a>
-                    <a href="#">Biology</a>
-                    <a href="#">Computer Science</a>
+                    <a href="{% url 'education:math' %}">Math</a>
+                    <a href="{% url 'education:biology' %}">Biology</a>
+                    <a href="{% url 'education:computer-science' %}">Computer Science</a>
                 </div>
                 
                 <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>

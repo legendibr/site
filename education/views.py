@@ -7,5 +7,4 @@ from django.template import loader
 
 def index(request):
     template = loader.get_template('education/index.html')
-    # return HttpResponse("Education!")
-    return HttpResponse(template.render())
+    return HttpResponse("Education!")

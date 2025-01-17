@@ -31,6 +31,7 @@ body {
 
 /* header navbar */
 .main-navbar {
+    position: relative; /* Feels better when scrolling */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,9 +39,6 @@ body {
     background: #333;
     padding: 15px 20px 15px 20px;
     color: white;
-
-    /* height: 100%; /* x% of what, idk */
-    /* 100% when the menu bar is full (sizing needs to be the same on mobile) */
     height: 78px;
 }
 
