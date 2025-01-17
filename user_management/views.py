@@ -4,11 +4,6 @@ from .forms import CustomUserCreationForm
 
 # Create your views here.
 
-
-def index(request):
-    return HttpResponse("user management")
-
-
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
