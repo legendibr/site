@@ -1,3 +1,5 @@
+import urllib
+import urllib.parse
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
@@ -13,6 +15,7 @@ def post_comment(request):
     # only POST requests can be made (decorator)
     form = CreateCommentForm(request.POST)
     if form.is_valid():
+        # Only thing in form is whats in CreateCommentForm.Meta.fields
         comment = form.save(commit=False)
         
         replying_to_id = request.POST.get("replying_to_id")
@@ -24,8 +27,16 @@ def post_comment(request):
         except:
             comment.is_reply = False
         
+
         comment.user = request.user
-        comment.page_path = request.path
+
+        comment.page_path = request.POST.get("page_path")
+
+        # Page path is passed, but we do some basic checking
+        if comment.page_path != urllib.parse.urlparse(request.META.get("HTTP_REFERER", "")).path:
+            return JsonResponse({"message": "invalid_form"})
+        
+        
         comment.hidden = False
         comment.save()
         

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="{% url 'social:api_post_comment' %}" method="post">
+<!-- TODO: Custom form submit-->
+<form action="{% url 'social:api_post_comment' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    <input type="hidden" name="page_path" value="{{ request.path }}">
     <!-- If a comment is replying, then the value here needs to be the id of the comment-->
     <input type="hidden" name="replying_to_id" value="null">
     <input type="submit" value="Submit">
