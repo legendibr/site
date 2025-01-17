@@ -1,37 +1,29 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block head %}
-  <link rel="stylesheet" href="{% static 'education/css/education.css' %}" />
+<link rel="stylesheet" href="{% static 'education/css/education.css' %}" />
 {% endblock %}
 
 {% block content %}
-  {% block mainTitle %}
-    <h1></h1>
-  {% endblock %}
-  {% block subject %}
-  {% for subject in subjects %}
-    <div class="subject">
-      {% block subjectBg %}
-        <div class="background" style='background-image: url("{{ subject.image }}");'></div>
-      {% endblock %}
-      {% block subjectTitle %}
-        <span>{{ subject.title }}</span>
-      {% endblock %}
-      {% block subjectIntro %}
-        <p>{{ subject.intro }}</p>
-      {% endblock %}
-        {% block action %}
-        <div class="action">
-          <a>Start learning</a>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>  
-        <div class="action">
-          <a>Test your knowledge</a>
-          <i class="fa-solid fa-arrow-right"></i>
-        </div>
-        {% endblock %}
-    </div>
-  {% endfor %}
-{% endblock %}
+    <h1>{% block content_title %}{% endblock %}</h1>
+
+    {% block subject %}
+        {% for subject in subjects %}
+            <div class="subject">
+                <div class="background" style="background-image: url('{{ subject.image_url }}'');""></div>
+                <span>{{ subject.title }}</span>
+                <p>{{ subject.intro }}</p>
+                <div class="action">
+                    <a>Start learning</a>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+                <div class="action">
+                    <a>Test your knowledge</a>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+            </div>
+        {% endfor %}
+    {% endblock %}
+
 {% endblock %}
