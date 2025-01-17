@@ -1,8 +1,24 @@
 {% extends "base.html" %}
 
+{% block head %}
+<script>
+    function submitCreateCommentForm(form, callback){                
+        fetch(form.getAttribute("action"), {
+            method: form.getAttribute("method"),
+            body: new FormData(form), // or this, event.target
+            headers: {
+                "X-CSRFToken": form.querySelector("[name=csrfmiddlewaretoken]").value
+            }
+            // When the comments done submitting, call callback() with the response from the api
+        }).then(response => response.json()).then(data => callback(data));
+    }
+    // document.addEventListener("DOMContentLoaded", preventCreateCommentFormRedirect((data) => console.log(data)));
+</script>
+{% endblock head %}
+
 {% block content %}
 <!-- TODO: Custom form submit-->
-<form action="{% url 'social:api_post_comment' %}" method="POST">
+<form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, console.log)" action="{% url 'social:api_post_comment' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="hidden" name="page_path" value="{{ request.path }}">
