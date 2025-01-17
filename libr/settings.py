@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "education",
     "user_management",
     "info",
+    "social",
     "debug_toolbar",
 ]
 

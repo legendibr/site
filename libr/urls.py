@@ -30,6 +30,7 @@ urlpatterns = [
             ("user_management.urls", "user_management"), namespace="user_management"
         ),
     ),
+    path("social/", include(("social.urls", "social"), namespace="social")), 
     path("", include(("info.urls", "info"), namespace="info")), 
 ]
 
