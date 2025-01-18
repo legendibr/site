@@ -11,9 +11,10 @@ Directory structure
 
 ## Deploying
 
-libr/settings.py` takes `DEBUG`, `SECRET_KEY` and `ALLOWED_HOSTS` from a `.env` file.
+`libr/settings.py` takes `DEBUG`, `SECRET_KEY` and `ALLOWED_HOSTS` from a `.env` file.
 
-Example `.env`
+**Example `.env`**
+
 ```
 DEBUG=False
 SECRET_KEY="obviously-not-secret-keys"
