@@ -11,4 +11,11 @@ Directory structure
 
 ## Deploying
 
-Make sure that `DEBUG = False` in `libr/settings.py`
+libr/settings.py` takes `DEBUG`, `SECRET_KEY` and `ALLOWED_HOSTS` from a `.env` file.
+
+Example `.env`
+```
+DEBUG=False
+SECRET_KEY="obviously-not-secret-keys"
+ALLOWED_HOSTS='["example.com"]' # Parsed as JSON, so no single quotes
+```
