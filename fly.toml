@@ -28,3 +28,7 @@ console_command = '/code/manage.py shell'
 [[statics]]
   guest_path = '/code/staticfiles'
   url_prefix = '/static/'
+
+[mounts]
+  source = 'db'
+  destination = "/code/data"

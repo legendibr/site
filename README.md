@@ -7,3 +7,8 @@ Directory structure
 `education/` contains the teaching platform
 `user_management/` contains authentication code
 `social/` contains social features, like commenting
+
+
+## Deploying
+
+Make sure that `DEBUG = False` in `libr/settings.py`
