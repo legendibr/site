@@ -122,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 # Where static files are served
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 # Where static files are found
 STATICFILES_DIRS = [BASE_DIR / "static"]
 # Where collectstatic outputs files

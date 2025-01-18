@@ -1,0 +1,64 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* I don't know how to remove the label from the form, so I just it set it to display none */
+form label {
+    display: none;
+}
+
+form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    color: white;
+    border: none;
+    margin: -5px 0;
+    resize: vertical;
+    min-height: 50px;
+    transition: background 0.3s;
+
+    &:hover, &:focus {
+        background: rgba(0, 0, 0, 0.6);
+    }
+}
+
+form textarea::placeholder {
+    color: white;
+}
+
+form>.form-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    gap: 5px;
+    align-self: flex-start;
+}
+
+form input[type=submit] {
+    align-self: flex-end;
+    background: rgb(55, 194, 241);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+        background: rgb(55, 174, 221);
+    }
+}
