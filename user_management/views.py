@@ -4,6 +4,7 @@ from .forms import CustomUserCreationForm
 
 # Create your views here.
 
+
 def register(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
