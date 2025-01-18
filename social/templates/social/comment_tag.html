@@ -1,0 +1,21 @@
+{% load static %}
+
+{% if not comment_template_tag_js_included %}
+    <script src="{% static 'social/create-comment.js' %}"></script>
+{% endif %}
+
+<form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, console.log)"
+    action="{% url 'social:api_post_comment' %}" method="POST">
+    <div class="form-title">
+        <span>Comment</span>
+        <i class="fa-solid fa-comment"></i>
+    </div>
+    
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="hidden" name="page_path" value="{{ page_path }}" />
+    <!-- If a comment is replying, then the value here needs to be the id of the comment -->
+    <input type="hidden" name="replying_to_id" value="{{ replying_to_id }}" />
+    <input type="submit" value="Submit" />
+</form>

@@ -1,45 +1,21 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
+{% load comments %}
 
 {% block title %}
-  - Comment
+- Comment
 {% endblock %}
 
 {% block head %}
-  <link rel="stylesheet" href="{% static 'social/css/test_comments.css' %}" />
-  <script>
-    function submitCreateCommentForm(form, callback) {
-      // When a form gets submitted, it redirects you
-      // For comments, it shouldn't redirect, hence this code
-      fetch(form.getAttribute('action'), {
-        method: form.getAttribute('method'),
-        body: new FormData(form), // or this, event.target
-        headers: {
-          'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
-        }
-        // When the comments done submitting, call callback() with the response from the api
-      })
-        .then((response) => response.json())
-        .then((data) => callback(data))
-    }
-    // document.addEventListener("DOMContentLoaded", preventCreateCommentFormRedirect((data) => console.log(data)));
-  </script>
+<link rel="stylesheet" href="{% static 'social/css/test_comments.css' %}" />
 {% endblock %}
 
 {% block content %}
-  <!-- TODO: Custom form submit -->
-  <div class="center">
-    <form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, console.log)" action="{% url 'social:api_post_comment' %}" method="POST">
-      <div class="form-title">
-        <span>Comment</span>
-        <i class="fa-solid fa-comment"></i>
-      </div>
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="hidden" name="page_path" value="{{ request.path }}" />
-      <!-- If a comment is replying, then the value here needs to be the id of the comment -->
-      <input type="hidden" name="replying_to_id" value="null" />
-      <input type="submit" value="Submit" />
-    </form>
-  </div>
+<!-- TODO: Should .center have flex-direction column, or just here -->
+<div class="center" style="flex-direction: column;">
+    <p>Comment</p>
+    {% create-comment-form %}
+    <p>Comment, replying to id=1234</p>
+    {% create-comment-form '1234' %}
+</div>
 {% endblock %}
