@@ -11,7 +11,7 @@
     {% block subject %}
         {% for subject in subjects %}
             <div class="subject">
-                <div class="background" style="background-image: url('{{ subject.image_url }}'');""></div>
+                <div class="background" style="background-image: url('{% static subject.image_url %}');"></div>
                 <span>{{ subject.title }}</span>
                 <p>{{ subject.intro }}</p>
                 <div class="action">
