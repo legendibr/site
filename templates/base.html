@@ -2,12 +2,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      LegendIBR{% block title %}
-      {% endblock %}
+        LegendIBR{% block title %}
+        {% endblock %}
     </title>
 
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
@@ -17,54 +18,56 @@
     <script src="{% static 'base.js' %}"></script>
     {% block head %}
     {% endblock %}
-  </head>
-  <body>
-    <header>
-      {% if user.is_authenticated %}
-        <form id="logout" hidden action="{% url 'user_management:logout' %}" method="POST">
-          {% csrf_token %}
-        </form>
-      {% endif %}
-      <nav class="main-navbar">
-        <div class="links hide-mobile">
-          {% if user.is_authenticated %}
-            <a href="#" onclick="document.querySelector('#logout').submit();">Logout</a>
+</head>
 
-            <!-- account settings popout -->
-            <a onclick="">Account Settings</a>
-          {% else %}
-            <!--  gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
+<body>
+    <header>
+        {% if user.is_authenticated %}
+        <form id="logout" hidden action="{% url 'user_management:logout' %}" method="POST">
+            {% csrf_token %}
+        </form>
+        {% endif %}
+        <nav class="main-navbar">
+            <div class="links hide-mobile">
+                {% if user.is_authenticated %}
+                <a href="#" onclick="document.querySelector('#logout').submit();">Logout</a>
+
+                <!-- account settings popout -->
+                <a onclick="">Account Settings</a>
+                {% else %}
+                <!--  gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
                             TODO: IDK if the redirect protection thing works 
                          -->
-            <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
-            <a href="{% url 'user_management:register' %}">Register</a>
-          {% endif %}
-        </div>
-        <a class="title" href="/">LegendIBR</a>
-        <div class="links hide-mobile">
-          <a href="{% url 'education:math' %}">Math</a>
-          <a href="{% url 'education:biology' %}">Biology</a>
-          <a href="{% url 'education:computer-science' %}">Computer Science</a>
+                <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
+                <a href="{% url 'user_management:register' %}">Register</a>
+                {% endif %}
+            </div>
+            <a class="title" href="/">LegendIBR</a>
+            <div class="links hide-mobile">
+                <a href="{% url 'education:math' %}">Math</a>
+                <!--<a href="{% url 'education:biology' %}">Biology</a>
+          <a href="{% url 'education:computer-science' %}">Computer Science</a>-->
+            </div>
+
+            <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
+        </nav>
+        <div id="mobile-navbar-popup">
+            <ul></ul>
         </div>
 
-        <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
-      </nav>
-      <div id="mobile-navbar-popup">
-        <ul></ul>
-      </div>
-
-      {% block header %}
-      {% endblock %}
+        {% block header %}
+        {% endblock %}
     </header>
     <div id="main">
-      {% block content %}
-      {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-      <!-- I used this for testing the footer positioning -->
-      {# {% lorem 10 p %} #}
+        <!-- I used this for testing the footer positioning -->
+        {# {% lorem 10 p %} #}
     </div>
     <footer>
-      <p>&copy; 2025 LegendIBR</p>
+        <p>&copy; 2025 LegendIBR</p>
     </footer>
-  </body>
+</body>
+
 </html>
