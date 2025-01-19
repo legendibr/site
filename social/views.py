@@ -62,7 +62,7 @@ def post_comment(request):
 
 # @login_required
 @require_GET
-def get_all_comments(request):
+def get_comments(request):
     # ?page_path=/foo/bar
     path = request.GET.get("page_path", None)
     comments = Comment.objects.exclude(hidden=True).filter(page_path=path)
