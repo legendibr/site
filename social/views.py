@@ -18,7 +18,9 @@ def comment_to_dict(comment):
         "text": comment.text,
         "is_reply": comment.is_reply,
         "replying_to_id": comment.replying_to.id if comment.is_reply else None,
-        "replies": [comment_to_dict(reply) for reply in comment.replies.exclude(hidden=True)]
+        "replies": [
+            comment_to_dict(reply) for reply in comment.replies.exclude(hidden=True)
+        ],
     }
 
 
@@ -67,8 +69,10 @@ def get_comments(request):
     # ?page_path=/foo/bar
     path = request.GET.get("page_path", None)
     # replying_to_id = request.GET.get("replying_to_id", None)
-    comments = Comment.objects.exclude(hidden=True).filter(page_path=path, is_reply=False)
-    return JsonResponse([comment_to_dict(comment) for comment in comments], safe=False) 
+    comments = Comment.objects.exclude(hidden=True).filter(
+        page_path=path, is_reply=False
+    )
+    return JsonResponse([comment_to_dict(comment) for comment in comments], safe=False)
 
 
 @staff_member_required
@@ -81,6 +85,7 @@ def test_comment(request):
             "test_reply_id": Comment.objects.all()[0].id,
         },
     )
+
 
 @staff_member_required
 def comment_ui(request):

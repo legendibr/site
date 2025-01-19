@@ -19,10 +19,13 @@ def create_comment_form(
         "callback": callback,
     }
 
-@register.inclusion_tag("social/load_comments_tag.html", name="load-comments", takes_context=True)
+
+@register.inclusion_tag(
+    "social/load_comments_tag.html", name="load-comments", takes_context=True
+)
 def load_comments(context, replying_to=None, callback="loadCommentsDefaultCallback"):
     return {
         "page_path": context.request.path,
         "replying_to": replying_to,
-        "load_comments_static_included": "load_comments_static_included" in context
+        "load_comments_static_included": "load_comments_static_included" in context,
     }
