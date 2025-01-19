@@ -30,3 +30,19 @@ At school, students are encouraged to take math every school year, and math is a
 
 It is undeniable that there are already a lot of free study resources available online like Khan Academy. However, none were designed specifically for SAS students, which makes it harder to follow and practice based on what will be tested. 
 Luckily, LIBR was made by students, making it the perfect choice for students at SAS. By learning on this website, students can gain a more comprehensive understanding of their topic, which makes it easier for them to do good in their class. 
+
+
+## Running
+
+**Install dependencies**
+
+`pip install -r requirements.txt`
+
+**Configuration**
+
+Make a create a file called `.env`
+
+It needs the fields shown in `.env.example`, corresponding to the relevant Django settings.
+
+When `DEBUG=False`, static files won't be served. Make sure to run
+`python manage.py collectstatic`
