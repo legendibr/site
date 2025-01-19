@@ -1,7 +1,7 @@
 {% load static %}
 
 {% if not comment_js_included %}
-    <script src="{% static 'social/comments.js' %}"></script>
+    <script src="{% static 'social/js/comments.js' %}"></script>
 {% endif %}
 
 <form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, {{ callback }})"

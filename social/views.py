@@ -81,3 +81,7 @@ def test_comment(request):
             "test_reply_id": Comment.objects.all()[0].id,
         },
     )
+
+@staff_member_required
+def comment_ui(request):
+    return render(request, "social/comment_ui.html")
