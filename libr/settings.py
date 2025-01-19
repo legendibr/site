@@ -25,7 +25,9 @@ load_dotenv(BASE_DIR / ".env")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ["DEBUG"] == "True" # can't use bool constructor here, instead use equality
+DEBUG = (
+    os.environ["DEBUG"] == "True"
+)  # can't use bool constructor here, instead use equality
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = str(os.environ["SECRET_KEY"])
