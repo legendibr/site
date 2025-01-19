@@ -43,11 +43,7 @@
                 {% endif %}
             </div>
             <a class="title" href="/">LegendIBR</a>
-            <div class="links hide-mobile">
-                <a href="{% url 'education:math' %}">Math</a>
-                <!--<a href="{% url 'education:biology' %}">Biology</a>
-          <a href="{% url 'education:computer-science' %}">Computer Science</a>-->
-            </div>
+            <button onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
 
             <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
         </nav>

@@ -5,54 +5,21 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'info/css/index.css' %}" />
+<style>
+    .main {
+        background: url("{% static 'info/images/index.gif' %}") no-repeat center center fixed;
+        background-size: cover;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- I moved the stuff from JSON to here because I don't think it needs a whole script -->
-    <div class="subject" style="background: lightgreen;">
-        <div class="subject-title">
-            <h1>Math</h1>
-            <button class="learn-more hide-mobile"><a href="{% url 'education:math' %}">Learn more</a></button>
-        </div>
-        <div class="subject-info">
-            <div class="background-image" style="background-image: url({% static 'info/images/math.jpg' %});"></div>
-            <div class="text-background"></div>
-            <p>Mathematics is the study of numbers, quantity, and space. It is a diverse field that includes arithmetic,
-                algebra, geometry, and calculus. Mathematics is used in a wide range of fields, including science,
-                engineering, and economics. It is also an important tool for understanding the world around us and making
-                informed decisions.</p>
-        </div>
+
+    <div class="main">
+        <img src="{% static 'info/images/logo.png' %}" alt="logo" width="250" height="250" />
+        <div>Learn math with LegendIBR</div>
+        <p>We provide you with the best and perfect resources made for SAS students.</p>
+        <button onclick="window.location.href='{% url 'education:math' %}'">Get started <i class="fa-solid fa-arrow-right"></i></button>
     </div>
-    <!--
-    <div class="subject" style="background: lightblue;">
-        <div class="subject-title">
-            <h1>Biology</h1>
-            <button class="learn-more hide-mobile"><a href="{% url 'education:biology' %}">Learn more</a></button>
-        </div>
-        <div class="subject-info">
-            <div class="background-image" style="background-image: url({% static 'info/images/biology.jpg' %});"></div>
-            <div class="text-background"></div>
-            <p>Biology is the study of living organisms and their interactions with each other and their environment. It is
-                a broad field that includes many different sub-disciplines, such as genetics, ecology, and microbiology.
-                Biology is important because it helps us understand how living things work and how they are connected to
-                each other and the world around them.</p>
-        </div>
-    </div>
-    <div class="subject" style="background: lightcoral;">
-        <div class="subject-title">
-            <h1>Computer Science</h1>
-            <button class="learn-more hide-mobile"><a href="{% url 'education:computer-science' %}">Learn more</a></button>
-        </div>
-        <div class="subject-info">
-            <div class="background-image" style="background-image: url({% static 'info/images/computer-science.jpg' %});">
-            </div>
-            <div class="text-background"></div>
-            <p>Computer science is the study of computers and computational systems. It involves the study of algorithms,
-                data structures, and programming languages, as well as the design and analysis of computer hardware and
-                software. Computer science is important because it underpins many of the technologies we use every day, from
-                smartphones and social media to self-driving cars and artificial intelligence.</p>
-        </div>
-    </div>
-    -->
 {% endblock %}

@@ -31,20 +31,36 @@ body {
 
 /* header navbar */
 .main-navbar {
-    position: relative; /* Feels better when scrolling */
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 25px;
     background: #333;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px;
     color: white;
-    height: 78px;
+    height: 75px;
 }
 
 .main-navbar a {
     color: white;
     text-decoration: none;
+}
+
+.main-navbar button {
+    border: 2px solid orangered;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+        border: none;
+        background: linear-gradient(90deg, #ff8c00, #ff0000);
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.2);
+    }
 }
 
 #mobile-navbar-burger {
@@ -88,6 +104,11 @@ body {
     &:hover, &:active {
         text-decoration: underline;
     }
+}
+
+#main {
+    margin: 0;
+    padding: 0;
 }
 
 @media screen and (max-width: 1024px) {
