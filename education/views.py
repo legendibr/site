@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
 
 # Create your views here.
 
@@ -52,16 +50,13 @@ COMPUTER_SCIENCE_DATA = {
 def education(request):
     return render(request, "education/education.html")
 
-
 def math(request):
     return render(request, "education/math.html", {"subjects": MATH_DATA["subjects"]})
-
 
 def biology(request):
     return render(
         request, "education/biology.html", {"subjects": BIOLOGY_DATA["subjects"]}
     )
-
 
 def computer_science(request):
     return render(

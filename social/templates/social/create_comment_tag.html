@@ -1,10 +1,10 @@
 {% load static %}
 
-{% if not comment_template_tag_js_included %}
-    <script src="{% static 'social/create-comment.js' %}"></script>
+{% if not comment_js_included %}
+    <script src="{% static 'social/comments.js' %}"></script>
 {% endif %}
 
-<form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, console.log)"
+<form class="create-comment-form" onsubmit="event.preventDefault(); submitCreateCommentForm(this, {{ callback }})"
     action="{% url 'social:api_post_comment' %}" method="POST">
     <div class="form-title">
         <span>Comment</span>

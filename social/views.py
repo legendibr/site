@@ -2,13 +2,22 @@ import urllib
 import urllib.parse
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from .models import Comment
 from .forms import CreateCommentForm
 
 # Create your views here.
 
+def comment_to_dict(comment):
+    return {
+        "id": comment.id,
+        "username": comment.user.username,
+        "text": comment.text,
+        "is_reply": comment.is_reply,
+        "replying_to_id": comment.replying_to.id if comment.is_reply else None
+    }
 
 @login_required
 @require_POST
@@ -41,15 +50,27 @@ def post_comment(request):
 
         comment.hidden = False
         comment.save()
-
-        return JsonResponse({"message": "success"})
-
+        
+        res = comment_to_dict(comment)
+        res["message"] = "success"
+        return JsonResponse(res)
     else:
         return JsonResponse({"message": "invalid_form"})
 
 
-@login_required
+# @login_required
+@require_GET
+def get_all_comments(request):
+    # ?page_path=/foo/bar
+    path = request.GET.get("page_path", None)
+    comments = Comment.objects.exclude(hidden=True).filter(page_path=path)
+
+    # safe = False, because otherwise response has to be a dict
+    return JsonResponse([comment_to_dict(comment) for comment in comments], safe=False)
+
+
+@staff_member_required
 def test_comment(request):
     return render(
-        request, "social/test_comments.html", context={"form": CreateCommentForm()}
+        request, "social/test_comments.html", context={"form": CreateCommentForm(), "test_reply_id": Comment.objects.all()[0].id}
     )

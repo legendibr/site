@@ -2,20 +2,25 @@
 {% load static %}
 {% load comments %}
 
-{% block title %}
-- Comment
-{% endblock %}
+<!-- TODO: have the "- " part in base.html -->
+{% block title %}- Comment{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'social/css/test_comments.css' %}" />
+<script>
+    function callback(){
+        
+    }
+</script>
 {% endblock %}
 
 {% block content %}
 <!-- TODO: Should .center have flex-direction column, or just here -->
 <div class="center" style="flex-direction: column;">
     <p>Comment</p>
+    <!-- Can use args and kwargs -->
     {% create-comment-form %}
-    <p>Comment, replying to id=1234</p>
-    {% create-comment-form '1234' %}
+    <p>Comment, replying to id={{ test_reply_id}}</p>
+    {% create-comment-form replying_to_id=test_reply_id %}
 </div>
 {% endblock %}

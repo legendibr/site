@@ -10,6 +10,10 @@ function submitCreateCommentForm(form, callback) {
         // When the comments done submitting, call callback() with the response from the api
     })
         .then((response) => response.json())
-        .then((data) => callback(data))
+        .then((data) => callback(data));
+}
+
+function createCommentDefaultCallback(data){
+    console.log(data);
 }
 // document.addEventListener("DOMContentLoaded", preventCreateCommentFormRedirect((data) => console.log(data)));
