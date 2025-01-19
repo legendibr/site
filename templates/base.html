@@ -43,9 +43,10 @@
                 {% endif %}
             </div>
             <a class="title" href="/">LegendIBR</a>
-            <button onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
+            <button onclick="window.location.href='{% url 'education:math' %}'" class="hide-mobile">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
 
-            <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
+            {% comment %} Temporarily comment his since there is only 1 subject {% endcomment %}
+            {% comment %} <i id="mobile-navbar-burger" class="fa-solid fa-list"></i> {% endcomment %}
         </nav>
         <div id="mobile-navbar-popup">
             <ul></ul>

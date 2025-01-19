@@ -23,10 +23,11 @@ body {
 }
 
 /* block content */
+/* Removed the margin otherwise the image on homepage would be fill the whole screen */
 #main {
     flex: 1;
-    margin: 10px;
-    padding: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 /* header navbar */
@@ -65,6 +66,10 @@ body {
 
 #mobile-navbar-burger {
     display: none;
+    background: orangered;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 10px;
 }
 
 #mobile-navbar-popup {
@@ -83,9 +88,6 @@ body {
     gap: 5px;
 }
 
-/* Navbar links */
-/* The initial one was for subject introduction, not for navbar link */
-/* Changed to navbar links style */
 .links {
     display: flex;
     justify-content: center;
@@ -104,11 +106,6 @@ body {
     &:hover, &:active {
         text-decoration: underline;
     }
-}
-
-#main {
-    margin: 0;
-    padding: 0;
 }
 
 @media screen and (max-width: 1024px) {
