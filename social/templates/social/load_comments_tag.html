@@ -1,0 +1,30 @@
+{% load static %}
+
+
+{% if not load_comments_static_included %}
+    <link rel="stylesheet" href="{% static 'social/comment_ui.css' %}" />
+    <script src="{% static 'social/comment_ui.js' %}"></script>
+    <script>
+        const GET_COMMENTS_URL = "{% url 'social:api_get_comments' %}";
+    </script>
+    <template id="load-comments-template">
+        <div class="comment" data-id="" data-replying-to-id="">
+            <div class="username"></div>
+            <div class="text"></div>
+            <a class="reply">Reply</a> <!-- TODO: Implement -->
+            <div class="comment-container replies"></div>
+        </div>
+    </template>
+{% endif %}
+
+<!--
+<div class="comment">
+    <div class="author">{{ comment.author }}</div>
+    <div class="content">{{ comment.content }}</div>
+    <a class="reply">Reply</a>
+    <div class="replies"></div>
+</div>
+-->
+
+<!--- Define template, because the js script will load it in -->
+<div class="comment-container" data-page-path="{{ page_path }}"></div>

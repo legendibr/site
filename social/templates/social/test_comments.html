@@ -4,15 +4,6 @@
 
 {% block title %}Comment{% endblock %}
 
-{% block head %}
-<link rel="stylesheet" href="{% static 'social/css/test_comments.css' %}" />
-<script>
-    function callback(){
-        
-    }
-</script>
-{% endblock %}
-
 {% block content %}
 <!-- TODO: Should .center have flex-direction column, or just here -->
 <div class="center" style="flex-direction: column;">
@@ -21,5 +12,6 @@
     {% create-comment-form %}
     <p>Comment, replying to id={{ test_reply_id}}</p>
     {% create-comment-form replying_to_id=test_reply_id %}
+    {% load-comments %}
 </div>
 {% endblock %}

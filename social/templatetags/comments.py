@@ -15,6 +15,14 @@ def create_comment_form(
         # template uses a separate context
         "page_path": context.request.path,
         "replying_to_id": "null" if replying_to_id == None else replying_to_id,
-        "comment_js_included": "comment_js_included" in context,
+        "create_comment_static_included": "create_comment_static_included" in context,
         "callback": callback,
+    }
+
+@register.inclusion_tag("social/load_comments_tag.html", name="load-comments", takes_context=True)
+def load_comments(context, replying_to=None, callback="loadCommentsDefaultCallback"):
+    return {
+        "page_path": context.request.path,
+        "replying_to": replying_to,
+        "load_comments_static_included": "load_comments_static_included" in context
     }

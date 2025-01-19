@@ -20,5 +20,5 @@ class Comment(models.Model):
     is_reply = models.BooleanField(default=False)
     # on_delete? nothing? rn it just gets deleted if the parent is deleted
     replying_to = models.ForeignKey(
-        "self", null=True, on_delete=models.CASCADE
+        "self", null=True, on_delete=models.CASCADE, related_name="replies"
     )  # can put target as string

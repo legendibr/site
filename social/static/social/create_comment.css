@@ -1,9 +1,4 @@
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
+/* TODO: Distinguish parent of form */
 
 form {
     display: flex;
