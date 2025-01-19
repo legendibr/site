@@ -1,5 +1,3 @@
-# LegendIBR
-
 <!-- Directory structure
 
 `libr/` is the root django app
@@ -7,6 +5,8 @@
 `education/` contains the teaching platform
 `user_management/` contains authentication code
 `social/` contains social features, like commenting -->
+
+# LegendIBR
 
 ## Introduction
 
