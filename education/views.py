@@ -69,8 +69,11 @@ def computer_science(request):
         "education/computer-science.html",
         {"subjects": COMPUTER_SCIENCE_DATA["subjects"]},
     )
+    
 
-def algebraLearn(request, lesson_number):
+ALGEBRA_CONTENT_PATH = ""
+
+def algebra_learn(request, lesson_number):
     try:
         content = get_lesson_content(lesson_number)["content"]
         lesson_number = get_lesson_content(lesson_number)["lesson_number"]

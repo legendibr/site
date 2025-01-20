@@ -6,5 +6,5 @@ urlpatterns = [
     path("math/", views.math, name="math"),
     path("biology/", views.biology, name="biology"),
     path("computer-science/", views.computer_science, name="computer-science"),
-    path("math/algebra/learn/lesson-<int:lesson_number>/", views.algebraLearn, name="learn"),
+    path("math/algebra/learn/lesson-<int:lesson_number>/", views.algebra_learn, name="algebra-learn"),
 ]

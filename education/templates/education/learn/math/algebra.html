@@ -1,16 +1,10 @@
-{% extends "base.html" %}
+{% extends "education/learn/learn.html" %}
 {% load static %}
 
 {% block title %}
 Algebra Lesson {{ lesson_number }}
 {% endblock %}
 
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'education/css/algebra-learn.css' %}" />
-{% endblock %}
-
-{% block content %}
-<div>
-    {{ content|safe }}
-</div>
+{% block subject_title %}
+Algebra
 {% endblock %}

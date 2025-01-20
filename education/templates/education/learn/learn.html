@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'education/css/learn.css' %}">
+<script src="{% static 'education/js/learn.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="sidebar">
+    <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
+    <hr>
+    <ul class="sidebar-content">
+        {% comment %} Examples {% endcomment %}
+        <li>Lesson 1</li>
+        <li>Lesson 2</li>
+        <li>Lesson 3</li>
+        <li>Lesson 4</li>
+        <li>Lesson 5</li>
+        <li>Lesson 6</li>
+        <li>Lesson 7</li>
+        <li><img src="{% static 'education/images/logo.png' %}" alt="logo.png" width="100" height="100"></li>
+    </ul>
+</div>
+
+<div class="content-container">
+    <div class="content">
+        {% comment %} Content here {% endcomment %}
+        <h1>Example heading</h1>
+        <p>Example paragraph</p>
+        <p>Example paragraph</p>
+        <p>Example paragraph</p>
+        <p>Example paragraph</p>
+    </div>
+    <div class="footer">
+        <button disabled>Previous</button>
+        <button>Next</button>
+    </div>
+</div>
+{% endblock %}
