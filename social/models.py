@@ -1,12 +1,15 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth import get_user_model
 
+
+MIN_COMMENT_LAYER = 0
+MAX_COMMENT_LAYER = 1
 # Create your models here.
 
 User = get_user_model()
 
-# TODO: Add verbose_name and str to model
-
+# TODO: Add verbose_name and str to model, load layer in frontend
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # related_name
@@ -22,3 +25,12 @@ class Comment(models.Model):
     replying_to = models.ForeignKey(
         "self", null=True, on_delete=models.CASCADE, related_name="replies"
     )  # can put target as string
+
+    layer = models.IntegerField() # 0, 1
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                check=Q(layer__gte=MIN_COMMENT_LAYER, layer__lte=MAX_COMMENT_LAYER),
+                name="Layer must be between 0 and 1 (inclusive)"
+            )
+        ]

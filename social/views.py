@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from .models import Comment
+from .models import Comment, MAX_COMMENT_LAYER, MIN_COMMENT_LAYER
 from .forms import CreateCommentForm
 
 # Create your views here.
@@ -16,6 +16,7 @@ def comment_to_dict(comment):
         "id": comment.id,
         "username": comment.user.username,
         "text": comment.text,
+        "layer": comment.layer,
         "is_reply": comment.is_reply,
         "replying_to_id": comment.replying_to.id if comment.is_reply else None,
         "replies": [
@@ -23,6 +24,13 @@ def comment_to_dict(comment):
         ],
     }
 
+def get_layers(comment):
+    # Count the number of layers, and keep the layer in a constraint of between MIN_COMMENT_LAYER and MAX_COMMENT_LAYER
+    layer = 0
+    while comment.is_reply:
+        comment = comment.replying_to
+        layer += 1
+    return MAX_COMMENT_LAYER if layer < MAX_COMMENT_LAYER else (MAX_COMMENT_LAYER if layer > MAX_COMMENT_LAYER else layer)
 
 @login_required
 @require_POST
@@ -54,6 +62,7 @@ def post_comment(request):
             return JsonResponse({"message": "invalid_form"})
 
         comment.hidden = False
+        comment.layer = get_layers(comment)
         comment.save()
 
         res = comment_to_dict(comment)

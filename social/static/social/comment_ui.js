@@ -4,6 +4,7 @@ function createCommentFromTemplate(data){
     t.setAttribute("data-id", data.id);
     t.querySelector(".username").textContent = data.username;
     t.querySelector(".text").textContent = data.text;
+    t.setAttribute("data-layer", data.layer);
     if (data.is_reply){
         t.setAttribute("data-replying-to-id", data.replying_to_id);
     }
@@ -14,9 +15,10 @@ function loadCommentAndReplies(comment_data, $container, layer = 0){
     let comment = createCommentFromTemplate(comment_data);
     $container.append(comment);
 
+    
     if (comment_data.replies.length > 0){
         let $replies = comment.querySelector(".replies");
-        $replies.setAttribute("data-layer", layer);
+        // $replies.setAttribute("data-layer", layer);
         comment_data.replies.forEach(reply => loadCommentAndReplies(reply, $replies, layer + 1));
     }
 
