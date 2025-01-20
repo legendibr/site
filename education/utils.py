@@ -8,4 +8,9 @@ def get_lesson_content(lesson_number):
         return FileNotFoundError(f"Lesson content not found for lesson {lesson_number}")
     with open(file_path, "r", encoding="utf-8") as file:
         content = file.read()
-    return markdown.markdown(content)
+    
+    HTML_CONTENT = markdown.markdown(content)
+    return {
+        "content": HTML_CONTENT,
+        "lesson_number": lesson_number,
+    }

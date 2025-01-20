@@ -72,7 +72,8 @@ def computer_science(request):
 
 def algebraLearn(request, lesson_number):
     try:
-        content = get_lesson_content(lesson_number)
+        content = get_lesson_content(lesson_number)["content"]
+        lesson_number = get_lesson_content(lesson_number)["lesson_number"]
     except FileNotFoundError:
         raise Http404("Lesson does not exist")
-    return render(request, "education/learn/math/algebra.html", {"content": content})
+    return render(request, "education/learn/math/algebra.html", {"content": content, "lesson_number": lesson_number})
