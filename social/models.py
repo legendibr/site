@@ -33,6 +33,6 @@ class Comment(models.Model):
         constraints = [
             models.CheckConstraint(
                 check=Q(layer__gte=MIN_COMMENT_LAYER, layer__lte=MAX_COMMENT_LAYER),
-                name="Layer must be between 0 and 1 (inclusive)",
+                name=f"Layer must be between {MIN_COMMENT_LAYER} and {MAX_COMMENT_LAYER} (inclusive)",
             )
         ]
