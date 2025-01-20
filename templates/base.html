@@ -43,10 +43,12 @@
                 {% endif %}
             </div>
             <a class="title" href="/">LegendIBR</a>
-            <button onclick="window.location.href='{% url 'education:math' %}'" class="hide-mobile">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
+            <!-- When I coded base.js, it expects to have links before and after the title. We removed the after links for now. -->
+            <div class="links" style="display: none;"></div>
 
-            {% comment %} Temporarily comment his since there is only 1 subject {% endcomment %}
-            {% comment %} <i id="mobile-navbar-burger" class="fa-solid fa-list"></i> {% endcomment %}
+            <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
+            <!-- I removed the hide mobile class, because I think it looks better without it-->
+            <button onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
         </nav>
         <div id="mobile-navbar-popup">
             <ul></ul>

@@ -1,6 +1,5 @@
 function createCommentFromTemplate(data){
     let t = document.querySelector("#load-comments-template").content.cloneNode(true).firstElementChild;
-    console.log(t);
     t.setAttribute("data-id", data.id);
     t.querySelector(".username").textContent = data.username;
     t.querySelector(".text").textContent = data.text;
