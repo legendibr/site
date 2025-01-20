@@ -1,4 +1,6 @@
+from django.http import Http404
 from django.shortcuts import render
+from .utils import get_lesson_content
 
 # Create your views here.
 
@@ -67,3 +69,10 @@ def computer_science(request):
         "education/computer-science.html",
         {"subjects": COMPUTER_SCIENCE_DATA["subjects"]},
     )
+
+def algebraLearn(request, lesson_number):
+    try:
+        content = get_lesson_content(lesson_number)
+    except FileNotFoundError:
+        raise Http404("Lesson does not exist")
+    return render(request, "education/learn/math/algebra.html", {"content": content})
