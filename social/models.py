@@ -11,6 +11,7 @@ User = get_user_model()
 
 # TODO: Add verbose_name and str to model, load layer in frontend
 
+
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # related_name
     page_path = models.CharField(
@@ -26,11 +27,12 @@ class Comment(models.Model):
         "self", null=True, on_delete=models.CASCADE, related_name="replies"
     )  # can put target as string
 
-    layer = models.IntegerField() # 0, 1
+    layer = models.IntegerField()  # 0, 1
+
     class Meta:
         constraints = [
             models.CheckConstraint(
                 check=Q(layer__gte=MIN_COMMENT_LAYER, layer__lte=MAX_COMMENT_LAYER),
-                name="Layer must be between 0 and 1 (inclusive)"
+                name="Layer must be between 0 and 1 (inclusive)",
             )
         ]

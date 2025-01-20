@@ -24,13 +24,19 @@ def comment_to_dict(comment):
         ],
     }
 
+
 def get_layers(comment):
     # Count the number of layers, and keep the layer in a constraint of between MIN_COMMENT_LAYER and MAX_COMMENT_LAYER
     layer = 0
     while comment.is_reply:
         comment = comment.replying_to
         layer += 1
-    return MAX_COMMENT_LAYER if layer < MAX_COMMENT_LAYER else (MAX_COMMENT_LAYER if layer > MAX_COMMENT_LAYER else layer)
+    return (
+        MAX_COMMENT_LAYER
+        if layer < MAX_COMMENT_LAYER
+        else (MAX_COMMENT_LAYER if layer > MAX_COMMENT_LAYER else layer)
+    )
+
 
 @login_required
 @require_POST
