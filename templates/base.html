@@ -47,8 +47,7 @@
             <div class="links" style="display: none;"></div>
 
             <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
-            <!-- I removed the hide mobile class, because I think it looks better without it-->
-            <button onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="hide-mobile" onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
         </nav>
         <div id="mobile-navbar-popup">
             <ul></ul>
