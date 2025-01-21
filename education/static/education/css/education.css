@@ -52,6 +52,8 @@ h1 {
 
 .subject a {
     font-size: 18px;
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .subject>.background {

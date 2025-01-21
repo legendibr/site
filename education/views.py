@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.urls import reverse, reverse_lazy
+from django.utils.functional import lazy
 from .models import PageLookupModel
 
 # Create your views here.
@@ -11,11 +14,13 @@ DATA = {
                 "title": "Algebra",
                 "intro": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables. This is useful because it lets us write general formulas that work for a wide range of numbers. Algebra also includes real numbers, complex numbers, matrices, vectors, and much more.",
                 "image_url": "education/images/algebra.jpg",
+                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/algebra", 1, "slug"])
             },
             {
                 "title": "Geometry",
                 "intro": "Geometry is a branch of mathematics that studies the sizes, shapes, positions angles and dimensions of things. Flat shapes like squares, circles, and triangles are a part of flat geometry and are called 2D shapes. These shapes have only 2 dimensions, the length and the width. Cubes, prisms, pyramids, spheres, cones, and cylinders are examples of 3D shapes. These shapes have 3 dimensions, the length, the width, and the height.",
                 "image_url": "education/images/geometry.jpg",
+                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/geometry", 1, "slug"])
             },
         ]
     },
@@ -50,18 +55,20 @@ DATA = {
 }
 
 
+@login_required
 def math(request):
     return subject_landing_page(request, "math")
 
-
+@login_required
 def biology(request):
     return subject_landing_page(request, "biology")
 
-
+@login_required
 def computer_science(request):
     return subject_landing_page(request, "computer-science")
 
 
+@login_required
 def subject_landing_page(request, subject):
     if not subject in DATA:
         raise Http404()
@@ -70,7 +77,9 @@ def subject_landing_page(request, subject):
     )
 
 
+@login_required
 def generic_md_page(request, page_path, lesson_id, slug):
+    print(page_path, lesson_id, slug)
     page = get_object_or_404(
         PageLookupModel, page_id=lesson_id, url_base_path=page_path
     )
