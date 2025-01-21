@@ -1,6 +1,6 @@
-from django.http import Http404
-from django.shortcuts import render
-from .utils import get_lesson_content
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import PageLookupModel
+# from .utils import get_lesson_content
 
 # Create your views here.
 
@@ -71,12 +71,9 @@ def computer_science(request):
     )
     
 
-ALGEBRA_CONTENT_PATH = ""
 
-def algebra_learn(request, lesson_number):
-    try:
-        content = get_lesson_content(lesson_number)["content"]
-        lesson_number = get_lesson_content(lesson_number)["lesson_number"]
-    except FileNotFoundError:
-        raise Http404("Lesson does not exist")
-    return render(request, "education/learn/math/algebra.html", {"content": content, "lesson_number": lesson_number})
+def generic_md_page(request, page_path, lesson_id, slug):
+    page = get_object_or_404(PageLookupModel, page_id=lesson_id, url_base_path=page_path)
+    if slug != page.slug:
+        return redirect("education:generic_md_page", page_path=page_path, lesson_id=lesson_id, slug=page.slug)
+    return render(request, f"education/{page_path}/{lesson_id}.html")

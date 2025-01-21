@@ -44,5 +44,10 @@ Make a create a file called `.env`
 
 It needs the fields shown in `.env.example`, corresponding to the relevant Django settings.
 
-When `DEBUG=False`, static files won't be served. Make sure to run
-`python manage.py collectstatic`
+When `DEBUG=False`, static files won't be served. 
+
+**Before running**
+```bash
+python manage.py compilemd
+python manage.py collectstatic
+```

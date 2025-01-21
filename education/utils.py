@@ -1,7 +1,8 @@
+"""
 import os
 import markdown
 
-def get_lesson_content(lesson_number):
+def get_lesson_content(lesson_number, slug):
     # Did not use Django's static file handling here
     file_path = f"education/contents/math/algebra/lesson-{lesson_number}.md"
     if not os.path.exists(file_path):
@@ -14,3 +15,4 @@ def get_lesson_content(lesson_number):
         "content": HTML_CONTENT,
         "lesson_number": lesson_number,
     }
+"""
