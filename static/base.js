@@ -55,11 +55,7 @@
 //     });
 
 //     // If the popup menu when the page gets resized, it needs to be closed
-//     window.addEventListener("resize", () => {
-//         if (window.innerWidth > 1024){
-//             closePopup();
-//         }
-//     });
+//     
 // }
 // document.addEventListener("DOMContentLoaded", () => {
 //     mobileNavbar();
@@ -71,41 +67,40 @@
 let popupOpened = false;
 
 function mobileNavbar() {
-    const header = document.querySelector("header");
-    const footer = document.querySelector("footer");
-    const popup = document.getElementById("mobile-navbar-popup");
-    const popupUl = document.querySelector(".mobile-navbar-ul");
-    const links = document.getElementById("navbar-links").children;
-    popup.style.height = window.innerHeight - header.offsetHeight - footer.offsetHeight + "px";
+    const popup = document.querySelector("#mobile-navbar-popup");
+    const popupUl = popup.querySelector("ul");
+
+    const links = Array.from(document.querySelectorAll(".main-navbar > .links")).flatMap(link => Array.from(link.children));
     
     for (const link of links) {
         const li = document.createElement("li");
-        li.innerHTML = link.innerHTML;
-        li.onclick = () => { window.location.href = link.href; };
+        li.append(link.cloneNode(true));
         popupUl.appendChild(li);
     }
 
-    window.addEventListener('resize', function() {
-        popup.style.height = window.innerHeight - header.offsetHeight - footer.offsetHeight + "px";
+    window.addEventListener("resize", (event) => {
+        if (window.innerWidth > 1024){
+            closePopup();
+        }
     })
 }
 
-function handelBugerOnClick() {
+function openPopup() {
+    popupOpened = true;
+    document.querySelector("#mobile-navbar-popup").classList.add("active");
+}
+
+function closePopup() {
+    popupOpened = false;
+    document.querySelector("#mobile-navbar-popup").classList.remove("active");
+}
+
+function toggleMobileNavbar() {
     if (popupOpened) {
         closePopup();
     } else {
         openPopup();
     }
-}
-
-function openPopup() {
-    popupOpened = true;
-    document.getElementById("mobile-navbar-popup").classList.add("mobile-navbar-popup-active");
-}
-
-function closePopup() {
-    popupOpened = false;
-    document.getElementById("mobile-navbar-popup").classList.remove("mobile-navbar-popup-active");
 }
 
 document.addEventListener("DOMContentLoaded", () => {

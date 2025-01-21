@@ -28,28 +28,27 @@
         </form>
         {% endif %}
         <nav class="main-navbar">
-            <div class="links hide-mobile" id="navbar-links">
+            <div class="links hide-mobile">
                 {% if user.is_authenticated %}
-                {% comment %} Used href instead of onclick {% endcomment %}
-                <a href="javascript:document.querySelector('#logout').submit();">Logout</a>
+                    <a onclick="document.querySelector('#logout').submit();">Logout</a>
 
                 <!-- TODO: account settings popout -->
                 <!--<a onclick="">Account Settings</a>-->
                 {% else %}
-                <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
-                <a href="{% url 'user_management:register' %}">Register</a>
+                    <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
+                    <a href="{% url 'user_management:register' %}">Register</a>
                 {% endif %}
             </div>
             <a class="title" href="/">LegendIBR</a>
             <!-- When I coded base.js, it expects to have links before and after the title. We removed the after links for now. -->
             <div class="links" style="display: none;"></div>
 
-            <i id="mobile-navbar-burger" class="fa-solid fa-list" onclick="handelBugerOnClick();"></i>
+            <i id="mobile-navbar-burger" class="fa-solid fa-list" onclick="toggleMobileNavbar();"></i>
             <button class="hide-mobile" onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
         </nav>
         <div id="mobile-navbar-popup">
             <i class="fa-solid fa-x" onclick="closePopup();"></i>
-            <ul class="mobile-navbar-ul"></ul>
+            <ul></ul>
         </div>
 
         {% block header %}
