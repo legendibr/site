@@ -28,16 +28,14 @@
         </form>
         {% endif %}
         <nav class="main-navbar">
-            <div class="links hide-mobile">
+            <div class="links hide-mobile" id="navbar-links">
                 {% if user.is_authenticated %}
-                <a href="#" onclick="document.querySelector('#logout').submit();">Logout</a>
+                {% comment %} Used href instead of onclick {% endcomment %}
+                <a href="javascript:document.querySelector('#logout').submit();">Logout</a>
 
                 <!-- TODO: account settings popout -->
                 <!--<a onclick="">Account Settings</a>-->
                 {% else %}
-                <!--  gonna get annoying redirecting back to home, but you need a redirect (https://robinlinus.github.io/socialmedia-leak/), because i don't know how to redirect to the previous page 
-                            TODO: IDK if the redirect protection thing works 
-                         -->
                 <a href="{% url 'user_management:login' %}?next={{ request.get_full_path }}">Login</a>
                 <a href="{% url 'user_management:register' %}">Register</a>
                 {% endif %}
@@ -46,11 +44,12 @@
             <!-- When I coded base.js, it expects to have links before and after the title. We removed the after links for now. -->
             <div class="links" style="display: none;"></div>
 
-            <i id="mobile-navbar-burger" class="fa-solid fa-list"></i>
+            <i id="mobile-navbar-burger" class="fa-solid fa-list" onclick="handelBugerOnClick();"></i>
             <button class="hide-mobile" onclick="window.location.href='{% url 'education:math' %}'">Start exploring <i class="fa-solid fa-arrow-right"></i></button>
         </nav>
         <div id="mobile-navbar-popup">
-            <ul></ul>
+            <i class="fa-solid fa-x" onclick="closePopup();"></i>
+            <ul class="mobile-navbar-ul"></ul>
         </div>
 
         {% block header %}
