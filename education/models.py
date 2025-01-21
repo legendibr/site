@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class PageLookupModel(models.Model):
     page_id = models.IntegerField()
     slug = models.SlugField()

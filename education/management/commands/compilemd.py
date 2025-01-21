@@ -15,11 +15,14 @@ TEMPLATE_FMT = """
 {{% endblock education_content %}}
 """
 
+
 def make_fmt(base, header, contents):
     return TEMPLATE_FMT.format(base, header, contents).replace("\n", "")
 
+
 def get_new_path(dir_name, start_path):
-    return Path(*start_path.parts[start_path.parts.index(dir_name) + 1:])
+    return Path(*start_path.parts[start_path.parts.index(dir_name) + 1 :])
+
 
 class Command(BaseCommand):
     help = "Compile the markdown files to templates"
@@ -42,22 +45,24 @@ class Command(BaseCommand):
                 html = md.convert(f.read())
 
             doc = pq(html)
-            
+
             # extract title, convert to slug
             header = doc("h1").eq(0)
             slug = slugify(header.text())
 
             contents = header.nextAll()
-            
+
             if "learn" in file.parts:
                 base = "education/learn/learn.html"
             else:
                 raise Exception(f"Unable to find base for file {file}")
-            
+
             # use template system to format markdown as (title, contents)
             t = make_fmt(base, header, contents)
             # correct_path = path_up_to_exclusive()
-            new_path = Path("./education/templates/education") / get_new_path("contents", file)
+            new_path = Path("./education/templates/education") / get_new_path(
+                "contents", file
+            )
             new_path = new_path.with_suffix(".html")
             new_path = new_path.resolve()
 
@@ -70,7 +75,12 @@ class Command(BaseCommand):
             template_path = get_new_path("templates", new_path)
             # url used
             url_base_path = get_new_path("education", template_path).parent
-            m = PageLookupModel(page_id=id_, slug=slug, template_path=template_path, url_base_path=url_base_path)
+            m = PageLookupModel(
+                page_id=id_,
+                slug=slug,
+                template_path=template_path,
+                url_base_path=url_base_path,
+            )
             m.save()
 
         print("Complete")
