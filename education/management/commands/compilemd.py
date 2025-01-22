@@ -1,4 +1,4 @@
-import markdown2
+import mdtex2html
 from django.core.management.base import BaseCommand
 from django.template.defaultfilters import slugify
 from education.models import PageLookupModel
@@ -18,7 +18,6 @@ TEMPLATE_FMT = """
 {{% endblock education_content %}}
 """
 
-
 def make_fmt(base, header, subject, contents):
     return TEMPLATE_FMT.format(base, header, subject, contents).replace("\n", "")
 
@@ -34,7 +33,7 @@ class Command(BaseCommand):
         # Remove all the old pages
         PageLookupModel.objects.all().delete()
 
-        md = markdown2.Markdown(extras=["fenced-code-blocks", "tables", "task_list"])
+        base = "education/base-content.html"
 
         # get all markdown file in ./contents
         path = Path("./education/contents").resolve()
@@ -45,7 +44,8 @@ class Command(BaseCommand):
 
             # md -> html
             with open(file) as f:
-                html = md.convert(f.read())
+                #html = md.convert(f.read())
+                html = mdtex2html.convert(f.read())
 
             doc = pq(html)
 
@@ -55,10 +55,10 @@ class Command(BaseCommand):
 
             contents = header.nextAll()
 
-            if "learn" in file.parts:
-                base = "education/learn/learn.html"
-            else:
-                raise Exception(f"Unable to find base for file {file}")
+            # if "learn" in file.parts:
+            #     base = "education/learn/learn.html"
+            # else:
+            #     raise Exception(f"Unable to find base for file {file}")
 
             # use template system to format markdown as (title, contents)
             subject = file.parts[-2].capitalize()

@@ -15,13 +15,15 @@ DATA = {
                 "title": "Algebra",
                 "intro": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables. This is useful because it lets us write general formulas that work for a wide range of numbers. Algebra also includes real numbers, complex numbers, matrices, vectors, and much more.",
                 "image_url": "education/images/algebra.jpg",
-                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/algebra", 1, "slug"])
+                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/algebra", 1, "slug"]),
+                "practice_url": reverse_lazy("education:generic_md_page", args=["practice/math/algebra", 1, "slug"]),
             },
             {
                 "title": "Geometry",
                 "intro": "Geometry is a branch of mathematics that studies the sizes, shapes, positions angles and dimensions of things. Flat shapes like squares, circles, and triangles are a part of flat geometry and are called 2D shapes. These shapes have only 2 dimensions, the length and the width. Cubes, prisms, pyramids, spheres, cones, and cylinders are examples of 3D shapes. These shapes have 3 dimensions, the length, the width, and the height.",
                 "image_url": "education/images/geometry.jpg",
-                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/geometry", 1, "slug"])
+                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/geometry", 1, "slug"]),
+                 "practice_url": reverse_lazy("education:generic_md_page", args=["practice/math/geometry", 1, "slug"]),
             },
         ]
     },

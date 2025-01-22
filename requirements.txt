@@ -1,5 +1,5 @@
 django
 gunicorn
 python-dotenv
-markdown2[all]
+mdtex2html
 pyquery
