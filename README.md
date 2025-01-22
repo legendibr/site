@@ -22,7 +22,7 @@ Since the website contains multiple layers of functionality, such as the home pa
 
 For example, the navigation bar at the top exists on all pages. Therefore, with it written in “base.html”, and being extended by other pages, we would no longer need to rewrite the code again. 
 
-We store the lessons in markdown format. Before running, our markdown gets compiled to HTML via a custom workflow
+The lessons are stored in the Markdown format. There’s a custom workflow that compiles the markdown to HTML, ensuring support for LaTeX equations. Each markdown page is mapped to a database entry, meaning that we can store information including lesson id, title, and file path. This information allows the URL router to dynamically load markdown files. It also means that we can include a slug in the URL.
 
 ## How does this help SAS
 
