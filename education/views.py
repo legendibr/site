@@ -84,7 +84,6 @@ def subject_landing_page(request, subject):
 
 @login_required
 def generic_md_page(request, page_path, lesson_id, slug):
-    print(page_path, lesson_id, slug)
     page = get_object_or_404(
         PageLookupModel, page_id=lesson_id, url_base_path=page_path
     )

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load comments %}
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'education/css/learn.css' %}">
@@ -24,18 +25,13 @@
 
         <div class="content-container">
             <div class="content">
-                <!--{% comment %} Content here {% endcomment %}
-                <h1>Example heading</h1>
-                <p>Example paragraph</p>
-                <p>Example paragraph</p>
-                <p>Example paragraph</p>
-                <p>Example paragraph</p>-->
                 {% block education_content %}{% endblock education_content %}
             </div>
             <div class="content-footer">
                 <button disabled>Previous</button>
                 <button>Next</button>
             </div>
+            {% load-comments %}
         </div>
     </div>
 {% endblock %}
