@@ -10,6 +10,6 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse("user_management:login") + "?name=/")
+            return redirect(reverse("user_management:login") + "?next=/")
     form = CustomUserCreationForm()
     return render(request, "user_management/register.html", {"form": form})
