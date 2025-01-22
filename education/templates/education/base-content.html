@@ -7,12 +7,11 @@
 {% endblock %}
 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'education/css/learn.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'education/css/base-content.css' %}">
 <script src="{% static 'education/js/learn.js' %}"></script>
 {% endblock %}
 
 {% block content %}
-    {% block subject_heading %}{% endblock subject_heading %}
     <div class="learn-content-wrapper">
         <div class="sidebar">
             <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
@@ -24,10 +23,13 @@
                     </li>
                 {% endfor %%}
             </ul>
-            <img src="{% static 'education/images/logo.png' %}" alt="logo.png" width="100" height="100">
         </div>
+        <i id="sidebar-toggle" onclick="toggleSidebar();" class="fa-solid fa-folder"></i>
 
         <div class="content-container">
+            <div class="subject-heading">
+                {% block subject_heading %}{% endblock subject_heading %}
+            </div>
             <div class="content">
                 {% block education_content %}{% endblock education_content %}
             </div>
