@@ -83,6 +83,7 @@ def generic_md_page(request, page_path, lesson_id, slug):
     page = get_object_or_404(
         PageLookupModel, page_id=lesson_id, url_base_path=page_path
     )
+
     if slug != page.slug:
         return redirect(
             "education:generic_md_page",
@@ -90,4 +91,6 @@ def generic_md_page(request, page_path, lesson_id, slug):
             lesson_id=lesson_id,
             slug=page.slug,
         )
-    return render(request, f"education/{page_path}/{lesson_id}.html")
+    
+    all_lessons = [(page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}") for page in PageLookupModel.objects.filter(url_base_path=page_path)]
+    return render(request, f"education/{page_path}/{lesson_id}.html", context={"all_lessons": all_lessons})

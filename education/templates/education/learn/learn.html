@@ -13,6 +13,12 @@
             <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
             <hr>
             <ul class="sidebar-content">
+                {% for lesson in all_lessons %}
+                    <li>
+                        <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
+                    </li>
+                {% endfor %%}
+                <!--
                 <li>Lesson 1</li>
                 <li>Lesson 2</li>
                 <li>Lesson 3</li>
@@ -20,6 +26,7 @@
                 <li>Lesson 5</li>
                 <li>Lesson 6</li>
                 <li>Lesson 7</li>
+                -->
             </ul>
             <img src="{% static 'education/images/logo.png' %}" alt="logo.png" width="100" height="100">
         </div>
