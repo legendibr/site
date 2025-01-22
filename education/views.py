@@ -15,17 +15,27 @@ DATA = {
                 "title": "Algebra",
                 "intro": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols. In elementary algebra, those symbols (today written as Latin and Greek letters) represent quantities without fixed values, known as variables. This is useful because it lets us write general formulas that work for a wide range of numbers. Algebra also includes real numbers, complex numbers, matrices, vectors, and much more.",
                 "image_url": "education/images/algebra.jpg",
-                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/algebra", 1, "slug"]),
-                "practice_url": reverse_lazy("education:generic_md_page", args=["practice/math/algebra", 1, "slug"]),
+                "learn_url": reverse_lazy(
+                    "education:generic_md_page", args=["learn/math/algebra", 1, "slug"]
+                ),
+                "practice_url": reverse_lazy(
+                    "education:generic_md_page",
+                    args=["practice/math/algebra", 1, "slug"],
+                ),
             },
             {
                 "title": "Geometry",
                 "intro": "Geometry is a branch of mathematics that studies the sizes, shapes, positions angles and dimensions of things. Flat shapes like squares, circles, and triangles are a part of flat geometry and are called 2D shapes. These shapes have only 2 dimensions, the length and the width. Cubes, prisms, pyramids, spheres, cones, and cylinders are examples of 3D shapes. These shapes have 3 dimensions, the length, the width, and the height.",
                 "image_url": "education/images/geometry.jpg",
-                "learn_url": reverse_lazy("education:generic_md_page", args=["learn/math/geometry", 1, "slug"]),
-                 "practice_url": reverse_lazy("education:generic_md_page", args=["practice/math/geometry", 1, "slug"]),
+                "learn_url": reverse_lazy(
+                    "education:generic_md_page", args=["learn/math/geometry", 1, "slug"]
+                ),
+                "practice_url": reverse_lazy(
+                    "education:generic_md_page",
+                    args=["practice/math/geometry", 1, "slug"],
+                ),
             },
-        ]
+        ],
     },
     "biology": {
         "title": "Biology",
@@ -40,7 +50,7 @@ DATA = {
                 "intro": "Genes are the basic physical and functional unit of heredity. Genes are made up of DNA. Some genes act as instructions to make molecules called proteins. However, many genes do not code for proteins. In humans, genes vary in size from a few hundred DNA bases to more than 2 million bases. The Human Genome Project has estimated that humans have between 20,000 and 25,000 genes.",
                 "image_url": "education/images/gene-and-inheritance.jpg",
             },
-        ]
+        ],
     },
     "computer-science": {
         "title": "Computer Science",
@@ -55,7 +65,7 @@ DATA = {
                 "intro": "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible. It is a general-purpose programming language intended to let application developers write once, run anywhere (WORA), meaning that compiled Java code can run on all platforms that support Java without the need for recompilation.",
                 "image_url": "education/images/java.jpg",
             },
-        ]
+        ],
     },
 }
 
@@ -64,9 +74,11 @@ DATA = {
 def math(request):
     return subject_landing_page(request, "math")
 
+
 @login_required
 def biology(request):
     return subject_landing_page(request, "biology")
+
 
 @login_required
 def computer_science(request):
@@ -77,9 +89,7 @@ def computer_science(request):
 def subject_landing_page(request, subject):
     if not subject in DATA:
         raise Http404()
-    return render(
-        request, "education/education.html", {"subjects": DATA[subject]}
-    )
+    return render(request, "education/education.html", {"subjects": DATA[subject]})
 
 
 @login_required
@@ -95,6 +105,16 @@ def generic_md_page(request, page_path, lesson_id, slug):
             lesson_id=lesson_id,
             slug=page.slug,
         )
-    
-    all_lessons = [(page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}") for page in PageLookupModel.objects.filter(url_base_path=page_path)]
-    return render(request, f"education/{page_path}/{lesson_id}.html", context={"all_lessons": all_lessons})
+
+    DATA = {
+        "title": page_path.split("/")[-1].replace("-", " ").title() + " Lesson " + str(page.page_id),
+        "all_lessons": [
+            (page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}")
+            for page in PageLookupModel.objects.filter(url_base_path=page_path)
+        ],
+    }
+    # all_lessons = [(page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}") for page in PageLookupModel.objects.filter(url_base_path=page_path)]
+    # return render(request, f"education/{page_path}/{lesson_id}.html", context={"all_lessons": all_lessons})
+    return render(
+        request, f"education/{page_path}/{lesson_id}.html", context={"data": DATA}
+    )

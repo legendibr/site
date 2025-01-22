@@ -2,6 +2,10 @@
 {% load static %}
 {% load comments %}
 
+{% block title %}
+{{ data.title }}
+{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'education/css/learn.css' %}">
 <script src="{% static 'education/js/learn.js' %}"></script>
@@ -14,7 +18,7 @@
             <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
             <hr>
             <ul class="sidebar-content">
-                {% for lesson in all_lessons %}
+                {% for lesson in data.all_lessons %}
                     <li>
                         <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
                     </li>

@@ -18,6 +18,7 @@ TEMPLATE_FMT = """
 {{% endblock education_content %}}
 """
 
+
 def make_fmt(base, header, subject, contents):
     return TEMPLATE_FMT.format(base, header, subject, contents).replace("\n", "")
 
@@ -44,7 +45,7 @@ class Command(BaseCommand):
 
             # md -> html
             with open(file) as f:
-                #html = md.convert(f.read())
+                # html = md.convert(f.read())
                 html = mdtex2html.convert(f.read())
 
             doc = pq(html)
@@ -62,7 +63,7 @@ class Command(BaseCommand):
 
             # use template system to format markdown as (title, contents)
             subject = file.parts[-2].capitalize()
-            t = make_fmt(base, header, subject ,contents)
+            t = make_fmt(base, header, subject, contents)
             # correct_path = path_up_to_exclusive()
             new_path = Path("./education/templates/education") / get_new_path(
                 "contents", file
