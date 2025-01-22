@@ -33,6 +33,7 @@ DEBUG = (
 SECRET_KEY = str(os.environ["SECRET_KEY"])
 
 ALLOWED_HOSTS = json.loads(os.environ["ALLOWED_HOSTS"])
+CSRF_TRUSTED_ORIGINS = json.loads(os.environ["CSRF_TRUSTED_ORIGINS"])
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
@@ -156,3 +157,38 @@ AUTH_USER_MODEL = "user_management.User"
 
 # Redirect to / after login
 LOGIN_REDIRECT_URL = "/"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{"
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{"
+        },
+    },
+    "handlers": {
+        "file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "data" / "errors.log",
+            "formatter": "verbose"
+        },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple"
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file", "console"],
+            "level": "ERROR",
+            "propagate": True
+        },
+    },
+}

@@ -22,6 +22,8 @@ Since the website contains multiple layers of functionality, such as the home pa
 
 For example, the navigation bar at the top exists on all pages. Therefore, with it written in “base.html”, and being extended by other pages, we would no longer need to rewrite the code again. 
 
+We store the lessons in markdown format. Before running, our markdown gets compiled to HTML via a custom workflow
+
 ## How does this help SAS
 
 LIBR could help students in many aspects, such as giving a better understanding of complex topics, providing comprehensive notes and explanations, and free discussions under each lesson. 
