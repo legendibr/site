@@ -106,15 +106,8 @@ def generic_md_page(request, page_path, lesson_id, slug):
             slug=page.slug,
         )
 
-    DATA = {
-        "title": page_path.split("/")[-1].replace("-", " ").title() + " Lesson " + str(page.page_id),
-        "all_lessons": [
-            (page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}")
-            for page in PageLookupModel.objects.filter(url_base_path=page_path)
-        ],
-    }
-    # all_lessons = [(page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}") for page in PageLookupModel.objects.filter(url_base_path=page_path)]
-    # return render(request, f"education/{page_path}/{lesson_id}.html", context={"all_lessons": all_lessons})
-    return render(
-        request, f"education/{page_path}/{lesson_id}.html", context={"data": DATA}
-    )
+    all_lessons = [(page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}") for page in PageLookupModel.objects.filter(url_base_path=page_path)]
+    all_lessons = sorted(all_lessons, key = lambda x: x[0])
+
+    return render(request, f"education/{page_path}/{lesson_id}.html", context={"all_lessons": all_lessons, "title": page_path.split("/")[-1].replace("-", " ").title() + " Lesson " + str(page.page_id)})
+

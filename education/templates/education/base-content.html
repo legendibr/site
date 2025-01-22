@@ -3,7 +3,7 @@
 {% load comments %}
 
 {% block title %}
-{{ data.title }}
+    {{ title }}
 {% endblock %}
 
 {% block head %}
@@ -19,7 +19,7 @@
                 <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
                 <hr>
                 <ul class="sidebar-content">
-                    {% for lesson in data.all_lessons %}
+                    {% for lesson in all_lessons %}
                         <li>
                             <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
                         </li>
