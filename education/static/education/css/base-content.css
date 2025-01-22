@@ -1,15 +1,38 @@
+.sidebar-wrapper {
+    position: absolute;
+    top: 50%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .sidebar {
     width: fit-content;
     background-color: lightgrey;
     text-align: center;
-    position: absolute;
+    margin-left: 10px;
 }
 
+/* Need visibility rather than display to keep position of #sidebar-toggle*/
 .sidebar:not(.active) {
-    display: none;
+    visibility: hidden;
 }
 .sidebar.active {
-    display: block;
+    visibility: visible;
+}
+
+#sidebar-toggle {
+    font-size: 24px;
+    margin-left: 10px;
+    
+    color: white;
+    background: orangered;
+    border-radius: 50%;
+    padding: 10px;
+
+    &:hover {
+        background: orange;
+    }
 }
 
 
@@ -101,21 +124,4 @@
 
 .content > * {
     word-wrap: break-word;
-}
-
-
-/* TODO: Circle around it */
-#sidebar-toggle {
-    font-size: 18px;
-    position: absolute;
-    margin-left: 5px;
-    top: 50%;
-
-    background: orangered;
-    border-radius: 50%;
-    padding: 10px;
-
-    &:hover {
-        background: orange;
-    }
 }

@@ -13,18 +13,20 @@
 
 {% block content %}
     <div class="learn-content-wrapper">
-        <div class="sidebar">
-            <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
-            <hr>
-            <ul class="sidebar-content">
-                {% for lesson in data.all_lessons %}
-                    <li>
-                        <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
-                    </li>
-                {% endfor %%}
-            </ul>
+        <div class="sidebar-wrapper">
+            <i id="sidebar-toggle" onclick="toggleSidebar();" class="fa-solid fa-folder"></i>
+            <div class="sidebar">
+                <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
+                <hr>
+                <ul class="sidebar-content">
+                    {% for lesson in data.all_lessons %}
+                        <li>
+                            <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
+                        </li>
+                    {% endfor %%}
+                </ul>
+            </div>
         </div>
-        <i id="sidebar-toggle" onclick="toggleSidebar();" class="fa-solid fa-folder"></i>
 
         <div class="content-container">
             <div class="subject-heading">
