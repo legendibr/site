@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+{{ subjects.title }}
+{% endblock %}
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'education/css/education.css' %}" />
 {% endblock %}
@@ -9,7 +13,7 @@
     <h1>{% block content_title %}{% endblock %}</h1>
 
     {% block subject %}
-        {% for subject in subjects %}
+        {% for subject in subjects.subjects %}
             <div class="subject">
                 <div class="background" style="background-image: url('{% static subject.image_url %}');"></div>
                 <span>{{ subject.title }}</span>

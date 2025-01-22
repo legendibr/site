@@ -9,6 +9,7 @@ from .models import PageLookupModel
 
 DATA = {
     "math": {
+        "title": "Math",
         "subjects": [
             {
                 "title": "Algebra",
@@ -25,6 +26,7 @@ DATA = {
         ]
     },
     "biology": {
+        "title": "Biology",
         "subjects": [
             {
                 "title": "Muscle structure",
@@ -39,6 +41,7 @@ DATA = {
         ]
     },
     "computer-science": {
+        "title": "Computer Science",
         "subjects": [
             {
                 "title": "Python",
@@ -73,7 +76,7 @@ def subject_landing_page(request, subject):
     if not subject in DATA:
         raise Http404()
     return render(
-        request, "education/education.html", {"subjects": DATA[subject]["subjects"]}
+        request, "education/education.html", {"subjects": DATA[subject]}
     )
 
 
