@@ -1,3 +1,4 @@
+/*
 window.onload = function() {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
@@ -11,3 +12,4 @@ window.onload = function() {
         content.style.width = window.innerWidth - sidebar.offsetWidth + 'px';
     }
 }
+*/

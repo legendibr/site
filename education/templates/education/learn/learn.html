@@ -7,35 +7,37 @@
 {% endblock %}
 
 {% block content %}
-<div class="sidebar">
-    <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
-    <hr>
-    <ul class="sidebar-content">
-        {% comment %} Examples {% endcomment %}
-        <li>Lesson 1</li>
-        <li>Lesson 2</li>
-        <li>Lesson 3</li>
-        <li>Lesson 4</li>
-        <li>Lesson 5</li>
-        <li>Lesson 6</li>
-        <li>Lesson 7</li>
-        <li><img src="{% static 'education/images/logo.png' %}" alt="logo.png" width="100" height="100"></li>
-    </ul>
-</div>
+    {% block subject_heading %}{% endblock subject_heading %}
+    <div class="learn-content-wrapper">
+        <div class="sidebar">
+            <h1 class="sidebar-title">{% block subject_title %}{% endblock %}</h1>
+            <hr>
+            <ul class="sidebar-content">
+                <li>Lesson 1</li>
+                <li>Lesson 2</li>
+                <li>Lesson 3</li>
+                <li>Lesson 4</li>
+                <li>Lesson 5</li>
+                <li>Lesson 6</li>
+                <li>Lesson 7</li>
+            </ul>
+            <img src="{% static 'education/images/logo.png' %}" alt="logo.png" width="100" height="100">
+        </div>
 
-<div class="content-container">
-    <div class="content">
-        <!--{% comment %} Content here {% endcomment %}
-        <h1>Example heading</h1>
-        <p>Example paragraph</p>
-        <p>Example paragraph</p>
-        <p>Example paragraph</p>
-        <p>Example paragraph</p>-->
-        {% block education_content %}{% endblock education_content %}
+        <div class="content-container">
+            <div class="content">
+                <!--{% comment %} Content here {% endcomment %}
+                <h1>Example heading</h1>
+                <p>Example paragraph</p>
+                <p>Example paragraph</p>
+                <p>Example paragraph</p>
+                <p>Example paragraph</p>-->
+                {% block education_content %}{% endblock education_content %}
+            </div>
+            <div class="content-footer">
+                <button disabled>Previous</button>
+                <button>Next</button>
+            </div>
+        </div>
     </div>
-    <div class="footer">
-        <button disabled>Previous</button>
-        <button>Next</button>
-    </div>
-</div>
 {% endblock %}

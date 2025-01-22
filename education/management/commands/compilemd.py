@@ -7,17 +7,20 @@ from pyquery import PyQuery as pq
 
 TEMPLATE_FMT = """
 {{% extends "{0}" %}}
-{{% block header %}}
+{{% block subject_heading %}}
     {1}
-{{% endblock header %}}
-{{% block education_content %}}
+{{% endblock subject_heading %}}
+{{% block subject_title %}}
     {2}
+{{% endblock subject_title %}}
+{{% block education_content %}}
+    {3}
 {{% endblock education_content %}}
 """
 
 
-def make_fmt(base, header, contents):
-    return TEMPLATE_FMT.format(base, header, contents).replace("\n", "")
+def make_fmt(base, header, subject, contents):
+    return TEMPLATE_FMT.format(base, header, subject, contents).replace("\n", "")
 
 
 def get_new_path(dir_name, start_path):
@@ -58,7 +61,8 @@ class Command(BaseCommand):
                 raise Exception(f"Unable to find base for file {file}")
 
             # use template system to format markdown as (title, contents)
-            t = make_fmt(base, header, contents)
+            subject = file.parts[-2].capitalize()
+            t = make_fmt(base, header, subject ,contents)
             # correct_path = path_up_to_exclusive()
             new_path = Path("./education/templates/education") / get_new_path(
                 "contents", file
