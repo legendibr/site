@@ -5,3 +5,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, "info/index.html")
+
+def privacy_policy(request):
+    return render(request, "info/privacy-policy.html")
