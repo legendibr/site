@@ -129,6 +129,8 @@ footer {
     border-radius: 50%;
     font-size: 18px;
     padding: 10px;
+    
+    cursor: pointer;
     /* Nearly added a hover effect, then decided against it
     &:hover {
         background: orange;
