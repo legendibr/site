@@ -40,8 +40,11 @@ SESSION_COOKIE_SECURE = True
 
 # https://django-analytical.readthedocs.io/en/latest/services/clicky.html
 # Don't use analytics for development
-if not DEBUG:
-    CLICKY_SITE_ID = os.environ.get("CLICKY_SITE_ID", None)
+if DEBUG:
+    # IDK
+    CLICKY_SITE_ID = "1"
+else: 
+    CLICKY_SITE_ID = os.environ.get("CLICKY_SITE_ID", "")
 
 # Application definition
 
