@@ -92,6 +92,9 @@ def subject_landing_page(request, subject):
     return render(request, "education/education.html", {"subjects": DATA[subject]})
 
 
+def fmt_generic_md_page(path, id, slug):
+    return f"/education/{path}/{id}/{slug}"
+
 @login_required
 def generic_md_page(request, page_path, lesson_id, slug):
     page = get_object_or_404(
@@ -107,10 +110,22 @@ def generic_md_page(request, page_path, lesson_id, slug):
         )
 
     all_lessons = [
-        (page.page_id, f"/education/{page_path}/{page.page_id}/{page.slug}")
+        (page.page_id, fmt_generic_md_page(page_path, page.page_id, page.slug))
         for page in PageLookupModel.objects.filter(url_base_path=page_path)
     ]
     all_lessons = sorted(all_lessons, key=lambda x: x[0])
+
+    try:
+        temp = PageLookupModel.objects.get(page_id = lesson_id - 1, url_base_path=page_path)
+        prev_lesson = fmt_generic_md_page(page_path, temp.page_id, temp.slug)
+    except PageLookupModel.DoesNotExist:
+        prev_lesson = None
+
+    try:
+        temp = PageLookupModel.objects.get(page_id = lesson_id + 1, url_base_path=page_path)
+        next_lesson = fmt_generic_md_page(page_path, temp.page_id, temp.slug)
+    except PageLookupModel.DoesNotExist:
+        next_lesson = None
 
     return render(
         request,
@@ -120,5 +135,8 @@ def generic_md_page(request, page_path, lesson_id, slug):
             "title": page_path.split("/")[-1].replace("-", " ").title()
             + " Lesson "
             + str(page.page_id),
+            "curr_lesson_id": lesson_id,
+            "prev_lesson": prev_lesson,
+            "next_lesson": next_lesson
         },
     )

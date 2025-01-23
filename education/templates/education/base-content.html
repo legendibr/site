@@ -20,7 +20,7 @@
                 <hr>
                 <ul class="sidebar-content">
                     {% for lesson in all_lessons %}
-                        <li>
+                        <li {% if lesson.0 == curr_lesson_id %} class="active" {% endif %}>
                             <a href="{{ lesson.1 }}">Lesson {{ lesson.0 }}</a>
                         </li>
                     {% endfor %%}
@@ -36,8 +36,25 @@
                 {% block education_content %}{% endblock education_content %}
             </div>
             <div class="content-footer">
-                <button disabled>Previous</button>
-                <button>Next</button>
+                <!-- Use visiblity hidden when no url, so the flexbox styling isn't messed up-->
+                <button
+                    {% if prev_lesson %}
+                        onclick="window.location.href='{{ prev_lesson }}'"
+                    {% else %}
+                        style="visibility: hidden;"
+                    {% endif %}
+                >
+                    Previous
+                </button>
+                <button
+                    {% if next_lesson %}
+                        onclick="window.location.href='{{ next_lesson }}'"
+                    {% else %}
+                        style="visibility: hidden;"
+                    {% endif %}
+                >
+                    Next
+                </button>
             </div>
             {% load-comments %}
         </div>

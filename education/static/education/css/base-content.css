@@ -58,6 +58,10 @@
     }
 }
 
+.sidebar-content > li.active {
+    background: lightskyblue;
+}
+
 .sidebar>.sidebar-content>li:last-child {
     border-bottom: none;
 }
