@@ -48,7 +48,11 @@
             </nav>
             <div id="mobile-navbar-popup">
                 <i class="fa-solid fa-x" onclick="closePopup();"></i>
-                <ul></ul>
+                <ul>
+                    <li>
+                        <a href="{% url 'info:index' %}">Home</a>
+                    </li>
+                </ul>
             </div>
 
             {% block header %}
