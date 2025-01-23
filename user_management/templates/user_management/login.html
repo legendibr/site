@@ -14,10 +14,6 @@
 {% block content %}
 <div class="center">
 
-{% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
 <!-- Location of redirect -->
 {% if next %}
     {% if user.is_authenticated %}
@@ -30,6 +26,16 @@
             </div>
             {% csrf_token %}
             {{ form.as_p }}
+            {% if form.errors %}
+                <p class="login-invalid">Your username and password didn't match. Please try again.</p>
+
+                {% comment %} Animations {% endcomment %}
+                <script>
+                    document.querySelectorAll("input").forEach(input => {
+                        input.style.animation = "input-invalid 1s ease-out";
+                    })
+                </script>
+            {% endif %}
             <p class="register-hint">Don't have an account yet? <a href="{% url 'user_management:register' %}">Register!</a></p>
             <input type="submit" value="Login">
             <input type="hidden" name="next" value="{{ next }}">

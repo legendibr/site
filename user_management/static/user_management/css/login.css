@@ -40,6 +40,18 @@ form input {
     border-radius: 5px;
 }
 
+@keyframes input-invalid {
+    0% {
+        border: 1px solid #ccc;
+    }
+    50% {
+        border: 1px solid red;
+    }
+    100% {
+        border: 1px solid #ccc;
+    }
+}
+
 form input[type=submit] {
     margin-top: 20px;
     background-color: #333;
@@ -58,6 +70,18 @@ form .register-hint {
     margin-bottom: -5px;
     font-size: 14px;
     font-style: italic;
+}
+
+form .login-invalid {
+    color: red;
+    margin: 0;
+    margin-top: -20px;
+    font-size: 14px;
+    padding: 0;
+}
+
+form ul {
+    display: none;
 }
 
 form .register-hint a {
