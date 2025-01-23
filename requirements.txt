@@ -3,3 +3,4 @@ gunicorn
 python-dotenv
 mdtex2html
 pyquery
+django-analytical

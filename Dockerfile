@@ -16,7 +16,7 @@ RUN set -ex && \
     rm -rf /root/.cache/
 COPY . /code
 
-ENV SECRET_KEY "eax9jo16xlcsDL7uuBlEoZWO2gCLgcHpKCUrxyFInMpFlxs8s1"
+# ENV SECRET_KEY "eax9jo16xlcsDL7uuBlEoZWO2gCLgcHpKCUrxyFInMpFlxs8s1"
 RUN python manage.py compilemd
 RUN python manage.py collectstatic --noinput
 

@@ -1,5 +1,6 @@
 <!-- The base file that has generic stuff -->
 {% load static %}
+{% load clicky %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,8 +63,11 @@
         {# {% lorem 10 p %} #}
     </div>
     <footer>
-        <p>&copy; 2025 LegendIBR</p>
+        <p style="margin-bottom: 2px;">&copy; 2025 LegendIBR</p>
+        <span style="font-size: 0.6em;">
+            We use Clicky to log and analyze the traffic to our website. You may review Clicky's privacy policy <a href="https://clicky.com/terms/privacy">here</a>
+        </span>
     </footer>
+    {% clicky %}
 </body>
-
 </html>

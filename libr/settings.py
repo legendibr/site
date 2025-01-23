@@ -38,13 +38,10 @@ CSRF_TRUSTED_ORIGINS = json.loads(os.environ["CSRF_TRUSTED_ORIGINS"])
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
-"""
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-
-}
-"""
+# https://django-analytical.readthedocs.io/en/latest/services/clicky.html
+# Don't use analytics for development
+if not DEBUG:
+    CLICKY_SITE_ID = os.environ.get("CLICKY_SITE_ID", None)
 
 # Application definition
 
@@ -59,6 +56,7 @@ INSTALLED_APPS = [
     "user_management",
     "info",
     "social",
+    "analytical"
     # "debug_toolbar",
 ]
 
